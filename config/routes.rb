@@ -17,9 +17,9 @@ Rails.application.routes.draw do
 
 
 
-  constraints(Subdomain) do  
-     get '/' => 'profiles#show', via: [:get, :post]
-  end  
+  # constraints(Subdomain) do  
+  #    get '/' => 'profiles#show', via: [:get, :post]
+  # end  
 
     root to: 'visitors#index'
 end

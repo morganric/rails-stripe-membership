@@ -66,15 +66,16 @@ class ProfilesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       
+    #for subdomains on heroku
+      @profile = Profile.find(params[:id])
 
+    # if params[:id] == nil
+    #      @profile = Profile.find_by(:id => request.subdomain)
+    #   else
+    #     @profile = Profile.find(params[:id])
+    #   end
 
-    if params[:id] == nil
-         @profile = Profile.find_by(:id => request.subdomain)
-      else
-        @profile = Profile.find(params[:id])
-      end
-
-    end
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
