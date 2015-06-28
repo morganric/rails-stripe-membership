@@ -7,8 +7,8 @@ ENV["MANDRILL_USERNAME"] = 'morganric+artup@gmail.com'
 ENV["MANDRILL_APIKEY"] = 'M3G7MmfWxDBYTxnRArXrYg'
 
 
-ENV["STRIPE_API_KEY"] = "sk_test_PhIgEyytohpRn7TF5eXG9Sk9"
-ENV["STRIPE_PUBLISHABLE_KEY"] = "pk_test_PeLyRBcFsGgCdFxNcgAopo6F"
+ENV["STRIPE_API_KEY"] = "sk_live_5EGD5UWyXW45nCXN7yB8VqTr"
+ENV["STRIPE_PUBLISHABLE_KEY"] = "pk_live_tLTQX2PjZTyJigo0FShpajcO"
 
 
 Rails.application.configure do
