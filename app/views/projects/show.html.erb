@@ -1,0 +1,17 @@
+
+<h1>
+  <%= @project.title %>
+</h1>
+
+<p class="well">
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <%= link_to @project.user.email, user_path(@project.user) %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

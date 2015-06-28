@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628140938) do
+ActiveRecord::Schema.define(version: 20150628151745) do
 
   create_table "payola_affiliates", force: :cascade do |t|
     t.string   "code"
@@ -118,6 +118,31 @@ ActiveRecord::Schema.define(version: 20150628140938) do
     t.integer  "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "second_name"
+    t.string   "image"
+    t.text     "bio"
+    t.string   "twitter"
+    t.string   "cover"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "cover"
+    t.string   "images"
+    t.string   "image"
+    t.string   "video"
+    t.integer  "user_id"
+    t.string   "slug"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
