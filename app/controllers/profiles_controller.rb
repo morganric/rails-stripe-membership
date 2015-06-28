@@ -11,6 +11,14 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
        @projects = Project.where(:user_id => @profile.user.id)
+       @tags = []
+
+       @projects.each do |p|
+        p.tag_list.each do |tag|
+          @tags << tag
+        end
+      end
+
        render layout: 'blank'
   end
 

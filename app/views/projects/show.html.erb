@@ -1,6 +1,10 @@
 
 <h1>
   <%= @project.title %>
+  <small>
+  <%= link_to @project.user.email, user_path(@project.user) %>
+</small>
+
 </h1>
 
 <p class="well">
@@ -8,9 +12,11 @@
   <%= @project.description %>
 </p>
 
-<p>
-  <%= link_to @project.user.email, user_path(@project.user) %>
-</p>
+<%  @project.tag_list.each do |tag| %>
+	<label><%= tag %></label>
+<% end %>
+
+
 
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
