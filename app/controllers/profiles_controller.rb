@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
        @projects = Project.where(:user_id => @profile.user.id)
+       render layout: 'blank'
   end
 
   # GET /profiles/new
