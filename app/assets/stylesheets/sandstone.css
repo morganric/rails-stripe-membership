@@ -9,3 +9,7 @@
 	margin: 0 auto;
 	width: 0%;
 }
+
+h1 a, h2 a, h3 a {
+	color:black;
+}

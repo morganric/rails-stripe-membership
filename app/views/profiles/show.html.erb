@@ -3,9 +3,9 @@
 <div class="col-md-2">
 
 <h1>
-  <%= @profile.first_name %>
+  <%= link_to @profile.first_name, profile_path(@profile) %>
 <br/>
-  <%= @profile.second_name %>
+  <%= link_to @profile.second_name, profile_path(@profile) %>
 </h1>
 
 
