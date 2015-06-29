@@ -23,21 +23,13 @@
   <ul class="nav nav-pills">
     
 
-    <li class="dropdown active">
-    <a class="dropdown-toggle"
-       data-toggle="dropdown"
-       href="#">
-        Projects
-        <b class="caret"></b>
-      </a>
-    <ul class="dropdown-menu">
-      <li><a href="#all" data-toggle="tab">All</a></li>
+    
+      <li class="active"><a href="#all" data-toggle="tab">All</a></li>
       <!-- links -->
       <% @tags.each_with_index do |tag, index| %>
       <li><a href="#<%= index %>" data-toggle="tab"><%= tag %></a></li>
       <% end %>
-    </ul>
-  </li>
+
      <li ><a href="#bio" data-toggle="tab">Bio</a></li>
     
   </ul>
@@ -46,12 +38,15 @@
     
     <div class="tab-pane " id="bio">
      <br/>
-      <p class="well col-sm-12 ">
+     <div class="col-sm-3">
+     <%= image_tag(@profile.image.url(:standard)) %>
+     </div> 
+      <p class="well col-sm-9 ">
 		  <%= @profile.bio %>
 		 
-		<p class="pull-right" >
-			<%= link_to 'Edit', edit_profile_path(@profile)  %> 
-		</p>
+    		<span class="pull-right" >
+    			<%= link_to 'Edit', edit_profile_path(@profile)  %> 
+    		</span>
 		</p>
     </div>
 
