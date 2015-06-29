@@ -8,21 +8,19 @@
   <%= @profile.second_name %>
 </h1>
 
-<ul class="nav nav-tabs nav-stacked">
-  <% @projects.each do |project| %>
-	<li><%= link_to project.title, project %></li>
-<% end %>
 
-</ul>
 </div>
 
 <div class="col-md-10">
-<br/>
+
 <div class="pull-center">
-<h1>Title</h1>
+<h2>Title</h2>
 </div>
+
+</div>
+<div class="row" >
 <div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-pills">
     
 
     <li class="dropdown active">
@@ -43,10 +41,12 @@
      <li ><a href="#bio" data-toggle="tab">Bio</a></li>
     
   </ul>
-  <div class="tab-content">
+  <hr/>
+  <div class="tab-content col-sm-12">
+    
     <div class="tab-pane " id="bio">
      <br/>
-      <p class="well">
+      <p class="well col-sm-12 ">
 		  <%= @profile.bio %>
 		 
 		<p class="pull-right" >
@@ -57,7 +57,18 @@
 
     <% @tags.each_with_index do |tag, index| %>
     <div class="tab-pane " id="<%= index %>">
+
          <br/>
+    <div class="col-sm-2">
+      <br/>
+        <ul class="nav nav-tabs nav-stacked">
+      <% @projects.each do |project| %>
+      <li><%= link_to project.title, project %></li>
+    <% end %>
+
+    </ul>
+
+</div>
       <% @projects.tagged_with(tag).each do |project| %>
         <div class=" pull-left col-sm-3" %>
      <%= image_tag('http://placebear.com/200/300') %>
@@ -69,6 +80,16 @@
 
     <div class="tab-pane active" id="all">
      <br/>
+     <div class="col-sm-2">
+      <br/>
+        <ul class="nav nav-tabs nav-stacked">
+      <% @projects.each do |project| %>
+      <li><%= link_to project.title, project %></li>
+    <% end %>
+
+    </ul>
+
+</div>
      <% @projects.each do |project| %>
       <div class=" pull-left col-sm-3" %>
      <%= image_tag('http://placebear.com/200/300') %>
