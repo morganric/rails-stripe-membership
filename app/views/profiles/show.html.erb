@@ -62,7 +62,7 @@
     <div class="col-sm-2">
       <br/>
         <ul class="nav nav-tabs nav-stacked">
-      <% @projects.each do |project| %>
+      <% @projects.tagged_with(tag).each do |project| %>
       <li><%= link_to project.title, project %></li>
     <% end %>
 
