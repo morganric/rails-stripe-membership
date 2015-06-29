@@ -18,15 +18,33 @@
 
 <div class="col-md-10">
 <br/>
+<div class="pull-center">
+<h1>Title</h1>
+</div>
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#bio" data-toggle="tab">Bio</a></li>
-    <% @tags.each do |tag| %>
-    <li><a href="#tab2" data-toggle="tab"><%= tag %></a></li>
-    <% end %>
+    
+
+    <li class="dropdown active">
+    <a class="dropdown-toggle"
+       data-toggle="dropdown"
+       href="#">
+        Projects
+        <b class="caret"></b>
+      </a>
+    <ul class="dropdown-menu">
+      <li><a href="#all" data-toggle="tab">All</a></li>
+      <!-- links -->
+      <% @tags.each_with_index do |tag, index| %>
+      <li><a href="#<%= index %>" data-toggle="tab"><%= tag %></a></li>
+      <% end %>
+    </ul>
+  </li>
+     <li ><a href="#bio" data-toggle="tab">Bio</a></li>
+    
   </ul>
   <div class="tab-content">
-    <div class="tab-pane active" id="bio">
+    <div class="tab-pane " id="bio">
      <br/>
       <p class="well">
 		  <%= @profile.bio %>
@@ -36,9 +54,29 @@
 		</p>
 		</p>
     </div>
-    <div class="tab-pane" id="tab2">
+
+    <% @tags.each_with_index do |tag, index| %>
+    <div class="tab-pane " id="<%= index %>">
+         <br/>
+      <% @projects.tagged_with(tag).each do |project| %>
+        <div class=" pull-left col-sm-3" %>
+     <%= image_tag('http://placebear.com/200/300') %>
+      <h3><%= project.title %></h3>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+
+    <div class="tab-pane active" id="all">
      <br/>
-      <p>Howdy, I'm in Section 2.</p>
+     <% @projects.each do |project| %>
+      <div class=" pull-left col-sm-3" %>
+     <%= image_tag('http://placebear.com/200/300') %>
+      <h3><%= project.title %></h3>
+      </div>
+     <% end %>
+
+
     </div>
 
 
