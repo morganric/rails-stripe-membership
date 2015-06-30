@@ -14,6 +14,7 @@ gem 'twitter-bootswatch-rails-helpers'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'masonry-rails'
 
 group :development, :test do
   gem 'byebug'

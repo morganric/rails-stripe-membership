@@ -1,8 +1,8 @@
 
 <div class="col-md-12">
-<div class="col-md-2">
+<div class="col-md-2" >
 
-<h1>
+<h1 style="border-right: solid 1px #eee;">
   <%= link_to @profile.first_name, profile_path(@profile) %>
 <br/>
   <%= link_to @profile.second_name, profile_path(@profile) %>
@@ -13,11 +13,12 @@
 
 <div class="col-md-10">
 
-<div class="pull-center">
-<h2>Title</h2>
-</div>
+  <div class="pull-center">
+    <h2>Title</h2>
+  </div>
 
 </div>
+
 <div class="row" >
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-pills">
@@ -26,11 +27,11 @@
     
       <li class="active"><a href="#all" data-toggle="tab">All</a></li>
       <!-- links -->
-      <% @tags.each_with_index do |tag, index| %>
+      <% @tags.take(5).each_with_index do |tag, index| %>
       <li><a href="#<%= index %>" data-toggle="tab"><%= tag %></a></li>
       <% end %>
 
-     <li ><a href="#bio" data-toggle="tab">Bio</a></li>
+     <li ><a href="#bio" data-toggle="tab">About</a></li>
     
   </ul>
   <hr/>
@@ -63,35 +64,34 @@
 
     </ul>
 
-</div>
+    </div>
+
       <% @projects.tagged_with(tag).each do |project| %>
         <div class=" pull-left col-sm-3" %>
      <%= link_to image_tag(project.image.url(:standard)), project_path(project) %>
       <h3><%= project.title %></h3>
       </div>
       <% end %>
+
+
     </div>
     <% end %>
 
     <div class="tab-pane active" id="all">
      <br/>
-     <div class="col-sm-2">
-      <br/>
-        <ul class="nav nav-tabs nav-stacked">
-      <% @projects.each do |project| %>
-      <li><%= link_to project.title, project %></li>
-    <% end %>
+    
 
-    </ul>
+     <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
 
-</div>
+  
      <% @projects.each do |project| %>
-      <div class=" pull-left col-sm-3" %>
+      <div class=" pull-left col3" %>
      <%= link_to image_tag(project.image.url(:standard)), project_path(project) %>
       <h3><%= link_to project.title, project_path(project) %></h3>
       </div>
      <% end %>
 
+</div>
 
     </div>
 
@@ -112,6 +112,8 @@
 
 </div>
 </div>
+
+
 
 
 

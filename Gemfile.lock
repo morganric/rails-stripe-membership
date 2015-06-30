@@ -176,6 +176,8 @@ GEM
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    masonry-rails (0.2.4)
+      railties
     method_source (0.8.2)
     mime-types (2.6.1)
     mini_portile (0.6.2)
@@ -381,6 +383,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  masonry-rails
   payola-payments
   pg
   quiet_assets
