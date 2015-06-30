@@ -66,20 +66,35 @@
 
     </div>
 
+    <div class="col-md-10" >
+
+     <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+
+
       <% @projects.tagged_with(tag).each do |project| %>
-        <div class=" pull-left col-sm-3" %>
+        <div class=" pull-left col3" %>
      <%= link_to image_tag(project.image.url(:standard)), project_path(project) %>
       <h3><%= project.title %></h3>
       </div>
       <% end %>
-
+      </div></div>
 
     </div>
     <% end %>
 
     <div class="tab-pane active" id="all">
      <br/>
-    
+      <div class="col-sm-2">
+      <br/>
+        <ul class="nav nav-tabs nav-stacked">
+      <% @projects.each do |project| %>
+      <li><%= link_to project.title, project %></li>
+    <% end %>
+
+    </ul>
+
+    </div>
+    <div class="col-md-10" >
 
      <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
 
@@ -92,7 +107,7 @@
      <% end %>
 
 </div>
-
+</div>
     </div>
 
 
