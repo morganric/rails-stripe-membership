@@ -21,6 +21,10 @@ h1 a, h2 a, h3 a, a {
 	color:black !important;
 }
 
+nav a {
+  color: white !important;
+}
+
 #masonry-container {
   background: #FFF;
   padding: 5px;
