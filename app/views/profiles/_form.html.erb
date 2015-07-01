@@ -27,19 +27,20 @@
     <%= f.label :bio %><br>
     <%= f.text_area :bio %>
   </div>
-  <div class="field">
+  <div class="field hidden">
     <%= f.label :twitter %><br>
     <%= f.text_field :twitter %>
   </div>
-  <div class="field">
+  <div class="field hidden">
     <%= f.label :cover %><br>
     <%= f.text_field :cover %>
   </div>
-  <div class="field">
+  <div class="field hidden">
     <%= f.label :user_id %><br>
     <%= f.number_field :user_id %>
   </div>
+  <hr/>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn" %>
   </div>
 <% end %>
