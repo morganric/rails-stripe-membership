@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
   after_initialize :set_default_plan, :if => :new_record?
   # after_create :sign_up_for_mailing_list
+   after_create :create_profile
 
   belongs_to :plan
   validates_associated :plan
@@ -13,6 +14,11 @@ class User < ActiveRecord::Base
 
   def set_default_plan
     self.plan ||= Plan.last
+  end
+
+   def create_profile
+    @profile = Profile.new(:user_id => id)
+    @profile.save
   end
 
   has_one :profile
