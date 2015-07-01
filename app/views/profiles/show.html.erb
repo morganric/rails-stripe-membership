@@ -46,7 +46,9 @@
 		  <%= @profile.bio %>
 		 
     		<span class="pull-right" >
+          <% if current_user and current_user.admin? %>
     			<%= link_to 'Edit', edit_profile_path(@profile)  %> 
+          <% end %>
     		</span>
 		</p>
     </div>
