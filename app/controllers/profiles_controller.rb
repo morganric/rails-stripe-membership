@@ -27,9 +27,7 @@ class ProfilesController < ApplicationController
   def tag
 
       @tag = params[:tag]
-       @projects = Project.where(:user_id => @profile.user.id)
-       
-
+      @projects = Project.where(:user_id => @profile.user.id)
       @tags = []
 
        @projects.each do |p|
@@ -37,9 +35,10 @@ class ProfilesController < ApplicationController
           @tags << tag
         end
       end
+
+      @tags = @tags.uniq
       
       @projects = @projects.tagged_with(@tag)
-
       @other_tags = []
 
        @projects.each do |p|
@@ -51,6 +50,7 @@ class ProfilesController < ApplicationController
       end
 
       @other_tags = @other_tags.uniq
+
 
 
       
