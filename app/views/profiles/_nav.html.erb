@@ -21,7 +21,7 @@
     
       <li><%= link_to 'All', profile_path(@profile) %></li>
       <!-- links -->
-      <% @tags.take(10).each do |tag| %>
+      <% @tags.take(5).each do |tag| %>
       <li><%= link_to tag, tag_path(:id => @profile.id, :tag => tag) %></li>
       <% end %>
 
