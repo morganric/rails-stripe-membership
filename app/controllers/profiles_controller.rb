@@ -28,9 +28,19 @@ class ProfilesController < ApplicationController
 
       @tag = params[:tag]
        @projects = Project.where(:user_id => @profile.user.id)
-       @projects = @projects.tagged_with(@tag)
+       
 
-       @other_tags = []
+      @tags = []
+
+       @projects.each do |p|
+        p.tag_list.each do |tag|
+          @tags << tag
+        end
+      end
+      
+      @projects = @projects.tagged_with(@tag)
+
+      @other_tags = []
 
        @projects.each do |p|
         p.tag_list.each do |tag|
@@ -40,19 +50,9 @@ class ProfilesController < ApplicationController
         end
       end
 
-      @tags = []
-
-       @projects.each do |p|
-        p.tag_list.each do |tag|
-          @tags << tag
-        end
-      end
-      @tags = @tags.uniq
-
       @other_tags = @other_tags.uniq
 
 
-      @tags = @tags.uniq
       
 
        render layout: 'blank'
