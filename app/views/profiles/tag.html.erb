@@ -1,40 +1,9 @@
 
-<div class="col-md-12">
-<div class="col-md-2" >
-
-<h1 style="border-right: solid 1px #eee;">
-  <%= link_to @profile.first_name, profile_path(@profile) %>
-<br/>
-  <%= link_to @profile.second_name, profile_path(@profile) %>
-</h1>
-
-
-</div>
-
-<div class="col-md-10">
-
-  
-
- <br/><br/><br/> 
-
-</div>
+<%= render 'nav' %>
 
 <div class="row" >
 <div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul class="nav nav-pills">
-    
-
-    
-      <li class="active"><a href="#all" data-toggle="tab">All</a></li>
-      <!-- links -->
-      <% @tags.take(5).each_with_index do |tag, index| %>
-      <li><a href="#<%= index %>" data-toggle="tab"><%= tag %></a></li>
-      <% end %>
-
-     <li ><a href="#bio" data-toggle="tab">About</a></li>
-    
-  </ul>
-  <hr/>
+  
   <div class="tab-content col-sm-12">
     
     <div class="tab-pane " id="bio">
@@ -89,8 +58,8 @@
       <div class="col-sm-2">
       <br/>
         <ul class="nav nav-tabs nav-stacked">
-      <% @projects.each do |project| %>
-      <li><%= link_to project.title, project %></li>
+      <% @other_tags.each do |tag| %>
+      <li><%= link_to tag, tag %></li>
     <% end %>
 
     </ul>

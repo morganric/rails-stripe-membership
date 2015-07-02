@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy, :tag]
 
   # GET /profiles
   # GET /profiles.json
@@ -18,6 +18,40 @@ class ProfilesController < ApplicationController
           @tags << tag
         end
       end
+      @tags = @tags.uniq
+      
+
+       render layout: 'blank'
+  end
+
+  def tag
+
+      @tag = params[:tag]
+       @projects = Project.where(:user_id => @profile.user.id)
+       @projects = @projects.tagged_with(@tag)
+
+       @other_tags = []
+
+       @projects.each do |p|
+        p.tag_list.each do |tag|
+          unless tag == params[:tag]
+            @other_tags << tag
+          end
+        end
+      end
+
+      @tags = []
+
+       @projects.each do |p|
+        p.tag_list.each do |tag|
+          @tags << tag
+        end
+      end
+      @tags = @tags.uniq
+
+      @other_tags = @other_tags.uniq
+
+
       @tags = @tags.uniq
       
 

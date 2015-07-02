@@ -28,9 +28,6 @@
 	  }
 	});
 
-	  $('.col3 a').hover(function(){
-		   $(this).next().toggleClass('hidden');
-		  });
 
-	  
+
   });
