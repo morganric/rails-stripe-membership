@@ -29,8 +29,8 @@
       <div class="col-sm-2">
       <br/>
         <ul class="nav nav-tabs nav-stacked">
-      <% @other.each do |project| %>
-      <li><%= link_to project.title, project %></li>
+      <% @tags.each do |tag| %>
+      <li><%= link_to tag, tag %></li>
     <% end %>
 
     </ul>
