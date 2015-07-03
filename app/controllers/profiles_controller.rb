@@ -108,13 +108,13 @@ class ProfilesController < ApplicationController
     def set_profile
       
     #for subdomains on heroku
-      @profile = Profile.find(params[:id])
+      # @profile = Profile.find(params[:id])
 
-    # if params[:id] == nil
-    #      @profile = Profile.find_by(:id => request.subdomain)
-    #   else
-    #     @profile = Profile.find(params[:id])
-    #   end
+    if params[:id] == nil
+         @profile = Profile.find_by(:id => request.subdomain)
+      else
+        @profile = Profile.find(params[:id])
+      end
 
     end
 

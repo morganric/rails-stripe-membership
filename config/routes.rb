@@ -17,15 +17,14 @@ Rails.application.routes.draw do
   end
   resources :users
 
+    constraints(Subdomain) do  
+     get '/' => 'profiles#show', via: [:get, :post]
+  end 
+
 
   scope ":id" do
     get '', to: 'profiles#show', :as =>  :vanity_profile
   end
-
-
-  # constraints(Subdomain) do  
-  #    get '/' => 'profiles#show', via: [:get, :post]
-  # end  
 
     authenticated :user do
       root to: "projects#index", as: :authenticated_root
