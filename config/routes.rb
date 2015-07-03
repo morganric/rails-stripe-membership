@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   mount Upmin::Engine => '/admin'
 
   get 'products/:id', to: 'products#show', :as => :products
-  get ':id', to: 'profiles#show', :as => :vanity_profile
+  
   get '/profiles/:id/:tag', to: 'profiles#tag', :as => :tag
   devise_for :users, :controllers => { :registrations => 'registrations' }
   devise_scope :user do
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
   resources :users
 
-
+  get ':id', to: 'profiles#show', :as => :vanity_profile
 
   # constraints(Subdomain) do  
   #    get '/' => 'profiles#show', via: [:get, :post]
