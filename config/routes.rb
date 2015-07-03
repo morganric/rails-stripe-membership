@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   end
   resources :users
 
-  get ':id', to: 'profiles#show', :as => :vanity_profile
+
+  scope ":id" do
+    get '', to: 'profiles#show', :as =>  :vanity_profile
+  end
+
 
   constraints(Subdomain) do  
      get '/' => 'profiles#show', via: [:get, :post]
