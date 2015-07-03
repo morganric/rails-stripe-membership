@@ -19,9 +19,9 @@ Rails.application.routes.draw do
 
   get ':id', to: 'profiles#show', :as => :vanity_profile
 
-  # constraints(Subdomain) do  
-  #    get '/' => 'profiles#show', via: [:get, :post]
-  # end  
+  constraints(Subdomain) do  
+     get '/' => 'profiles#show', via: [:get, :post]
+  end  
 
     root to: 'visitors#index'
 end
