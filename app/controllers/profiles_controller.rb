@@ -19,7 +19,6 @@ class ProfilesController < ApplicationController
         end
       end
       @tags = @tags.uniq
-      
 
        render layout: 'blank'
   end
@@ -51,9 +50,6 @@ class ProfilesController < ApplicationController
 
       @other_tags = @other_tags.uniq
 
-
-
-      
 
        render layout: 'blank'
   end

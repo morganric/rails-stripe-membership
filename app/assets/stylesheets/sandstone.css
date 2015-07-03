@@ -16,6 +16,10 @@
   color: white !important;
 }
 
+.box {
+  background-color: white !important;
+}
+
 .pull-center {
 	margin: 0 auto;
 	width: 99%;
