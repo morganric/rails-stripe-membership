@@ -43,7 +43,7 @@
 
 
       <% @projects.tagged_with(tag).each do |project| %>
-        <div class=" pull-left col3" %>
+        <div class=" pull-left col3 box" %>
      <%= link_to image_tag(project.image.url(:standard)), project_path(project) %>
       <h3 class="hidden"><%= project.title %></h3>
       </div>
@@ -71,7 +71,7 @@
 
   
      <% @projects.each do |project| %>
-      <div class=" pull-left col3" %>
+      <div class=" pull-left col3 box" %>
      <%= link_to image_tag(project.image.url(:standard)), project_path(project) %>
       <h3 class="hidden"><%= link_to project.title, project_path(project) %></h3>
       </div>
