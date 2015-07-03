@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   mount Upmin::Engine => '/admin'
 
   get 'products/:id', to: 'products#show', :as => :products
-  
   get '/profiles/:id/:tag', to: 'profiles#tag', :as => :tag
+
   devise_for :users, :controllers => { :registrations => 'registrations' }
   devise_scope :user do
     put 'change_plan', :to => 'registrations#change_plan'
@@ -23,9 +23,16 @@ Rails.application.routes.draw do
   end
 
 
-  constraints(Subdomain) do  
-     get '/' => 'profiles#show', via: [:get, :post]
-  end  
+  # constraints(Subdomain) do  
+  #    get '/' => 'profiles#show', via: [:get, :post]
+  # end  
 
-    root to: 'visitors#index'
+    authenticated :user do
+      root to: "projects#index", as: :authenticated_root
+    end
+
+  unauthenticated do
+    root to: "visitors#index"
+  end
+
 end
