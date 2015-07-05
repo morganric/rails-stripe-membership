@@ -59,7 +59,7 @@
  <div class="col-md-6">
 
  <%= image_tag @project.image.url(:large) %>
-
+<%= cl_image_tag("#{@project.title}.jpg", :resource_type=>"video") %> 
 
  </div>
 
