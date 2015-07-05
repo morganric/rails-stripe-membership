@@ -15,20 +15,20 @@ Rails.application.routes.draw do
   devise_scope :user do
     put 'change_plan', :to => 'registrations#change_plan'
   end
-  resources :users
+  # resources :users
 
-    constraints(Subdomain) do  
-     get '/' => 'profiles#show', via: [:get, :post]
-  end 
+  #   constraints(Subdomain) do  
+  #    get '/' => 'profiles#show', via: [:get, :post]
+  # end 
 
 
   scope ":id" do
     get '', to: 'profiles#show', :as =>  :vanity_profile
   end
 
-    authenticated :user do
-      root to: "projects#index", as: :authenticated_root
-    end
+  authenticated :user do
+    root to: "projects#index", as: :authenticated_root
+  end
 
   unauthenticated do
     root to: "visitors#index"
