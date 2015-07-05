@@ -30,7 +30,19 @@
 
 
 <br>
+<% if @project.video != '' %>
 
+<div align="center" class="embed-responsive embed-responsive-16by9" >
+      <%= cl_video_tag(@project.video, :video_codec=>"auto", :controls => true, style: 'background-color:black;', :width => 750,
+            :height => 500, :poster => @project.image) %>
+        <div id="video_overlays">
+          <img src="http://res.cloudinary.com/vidgeo/image/upload/c_scale,e_gamma:-50,o_24,w_50/v1433273158/eye_tk7kls.png"/>
+      </div>
+</div>
+
+<% end %>
+
+<br>
 <p class="well">
 
   <%= @project.description %>

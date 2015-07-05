@@ -28,6 +28,17 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user_id = current_user.id
 
+    file = project_params[:video].tempfile.open
+    json = Cloudinary::Uploader.upload(file, 
+            :resource_type => :video, :public_id => @project.title)
+
+    @project.video = json['url']
+    image_url = "http://res.cloudinary.com/vidgeo/video/upload/" << json['version'].to_s << "/" << json['public_id'].to_s << ".jpg" 
+
+    debugger
+    @project.cover = image_url
+
+
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
