@@ -23,6 +23,12 @@ Rails.application.routes.draw do
     get '', to: 'profiles#show', :as =>  :vanity_profile
   end
 
+
+  constraints(Subdomain) do  
+     get '/' => 'profiles#show', via: [:get, :post]
+  end 
+
+
   authenticated :user do
     root to: "projects#index", as: :authenticated_root
   end
@@ -30,10 +36,6 @@ Rails.application.routes.draw do
   unauthenticated do
     root to: "visitors#index"
   end
-
-     constraints(Subdomain) do  
-     get '/' => 'profiles#show', via: [:get, :post]
-  end 
 
 
 end
