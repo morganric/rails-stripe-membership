@@ -30,7 +30,7 @@
 
 
 <br>
-<% if @project.video != '' %>
+<% if @project.video != nil %>
 
 <div align="center" class="embed-responsive embed-responsive-16by9" >
       <%= cl_video_tag(@project.video, :video_codec=>"auto", :controls => true, style: 'background-color:black;', :width => 750,
