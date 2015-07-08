@@ -27,12 +27,14 @@
      <br/>
       <div class="col-sm-2">
       <br/>
-        <ul class="nav nav-tabs nav-stacked">
-      <% @other_tags.each do |tag| %>
-      <li><%= link_to tag, tag %></li>
-    <% end %>
+            <ul class="nav nav-tabs nav-stacked">
+      <!-- links -->
+      <% @tags.take(5).each do |tag| %>
+      <li><%= link_to tag, tag_path(:id => @profile.id, :tag => tag) %></li>
+      <% end %>
+    
+  </ul>
 
-    </ul>
 
     </div>
     <div class="col-md-10" >

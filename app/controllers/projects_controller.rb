@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user_id = current_user.id
 
+    if project_params[:video] != nil
     file = project_params[:video].tempfile.open
     json = Cloudinary::Uploader.upload(file, 
             :resource_type => :video, :public_id => @project.title)
@@ -35,9 +36,8 @@ class ProjectsController < ApplicationController
     @project.video = json['url']
     image_url = "http://res.cloudinary.com/vidgeo/video/upload/" << json['version'].to_s << "/" << json['public_id'].to_s << ".jpg" 
 
-    debugger
     @project.cover = image_url
-
+    end
 
     respond_to do |format|
       if @project.save
@@ -82,6 +82,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title,:tag_list, :description, :cover, :images, :image, :video, :user_id, :slug)
+      params.require(:project).permit(:title,:tag_list, :description, :cover, :images, :image, :video, :user_id, :slug, :category_id)
     end
 end

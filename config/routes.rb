@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :projects
   resources :profiles
   get "content/silver"
@@ -9,7 +10,8 @@ Rails.application.routes.draw do
   mount Upmin::Engine => '/admin'
 
   get 'products/:id', to: 'products#show', :as => :products
-  get '/profiles/:id/:tag', to: 'profiles#tag', :as => :tag
+  get ':id/tagged/:tag', to: 'profiles#tag', :as => :tag
+  get ':id/:category_id', to: 'profiles#category', :as => :user_category
 
   devise_for :users, :controllers => { :registrations => 'registrations' }
   devise_scope :user do

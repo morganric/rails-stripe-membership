@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy, :tag]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy, :tag, :category]
 
   # GET /profiles
   # GET /profiles.json
@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+          @categories = Category.where(:user_id => @profile.user.id)
        @projects = Project.where(:user_id => @profile.user.id)
        @tags = []
 
@@ -26,6 +27,7 @@ class ProfilesController < ApplicationController
   def tag
 
       @tag = params[:tag]
+       @categories = Category.where(:user_id => @profile.user.id)
       @projects = Project.where(:user_id => @profile.user.id)
       @tags = []
 
@@ -52,6 +54,17 @@ class ProfilesController < ApplicationController
 
 
        render layout: 'blank'
+  end
+
+  def category
+    @tags = []
+    @projects = Project.where(:user_id => @profile.user.id, :category_id => params[:category_id])
+    @categories = Category.where(:user_id => @profile.user.id)
+       @projects.each do |p|
+        p.tag_list.each do |tag|
+          @tags << tag
+        end
+      end
   end
 
   # GET /profiles/new

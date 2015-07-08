@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   end
 
   has_one :profile
+  has_one :categories
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
