@@ -30,7 +30,7 @@
 
 
 <br>
-<% if @project.video != nil %>
+<% if @project.video != '' %>
 
 <div align="center" class="embed-responsive embed-responsive-16by9" >
       <%= cl_video_tag(@project.video, :video_codec=>"auto", :controls => true, style: 'background-color:black;', :width => 750,
@@ -59,7 +59,7 @@
  <div class="col-md-6">
 
  <%= image_tag @project.image.url(:large) %>
- <% if @project.video != nil %>
+ <% if @project.video != '' %>
 <%= cl_image_tag("#{@project.title}.jpg", :resource_type=>"video") %> 
 <% end %>
  </div>
