@@ -65,6 +65,8 @@ class ProfilesController < ApplicationController
           @tags << tag
         end
       end
+
+      render layout: 'blank'
   end
 
   # GET /profiles/new
