@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy, :tag, :category]
+    before_action :allow_iframe
 
   # GET /profiles
   # GET /profiles.json
@@ -119,6 +120,12 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+    def allow_iframe
+      response.headers['X-Frame-Options'] = "ALLOWALL"
+    end
+
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       
