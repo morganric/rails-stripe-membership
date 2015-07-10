@@ -23,16 +23,17 @@ Rails.application.routes.draw do
 
    scope ":id" do
     get '', to: 'profiles#show', :as =>  :vanity_profile
-  end
 
+  end
+get 'project/:id', to: 'projects#show', as: :vanity_project
 
 
     constraints(Subdomain) do  
      get '/' => 'profiles#show', via: [:get, :post]
   end 
 
-  get ':id/tagged/:tag', to: 'profiles#tag', :as => :tag
-  get ':id/:category_id', to: 'profiles#category', :as => :user_category
+  get '/tagged/:tag', to: 'profiles#tag', :as => :tag
+  get '/category/:category_id', to: 'profiles#category', :as => :user_category
 
 
   authenticated :user do
