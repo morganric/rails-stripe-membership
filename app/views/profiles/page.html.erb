@@ -32,7 +32,7 @@
     <ul class="nav nav-stacked">
       <!-- links -->
       <% @tags.take(5).each do |tag| %>
-      <li role="presentation" ><%= link_to "##{tag}", vanity_tag_path(user_id: @profile.slug, :tag => tag) %></li>
+      <li role="presentation" ><%= link_to "##{tag}", page_tag_path(:tag => tag) %></li>
       <% end %>
   </ul>
 
@@ -45,11 +45,11 @@
      <% @projects.each do |project| %>
       <div class=" pull-left col3 box" %>
      <% if project.video == '' %> 
-     <%= link_to image_tag(project.image.url(:standard)), vanity_project_path(user_id: project.user.profile.slug, project_id: project.id) %>
+     <%= link_to image_tag(project.image.url(:standard)), page_project_path(project) %>
      <% else %>
-     <%= link_to cl_image_tag("#{project.title}.jpg", :resource_type=>"video"), vanity_project_path(user_id: project.user.profile.slug, project_id: project.id) %>
+     <%= link_to cl_image_tag("#{project.title}.jpg", :resource_type=>"video"), page_project_path(:id => project.id) %>
      <% end %>
-      <h3 class="hidden"><%= link_to project.title, vanity_project_path(user_id: project.user.profile.slug, project_id: project.id) %></h3>
+      <h3 class="hidden"><%= link_to project.title, page_project_path(:id => project.id) %></h3>
       </div>
      <% end %>
 
