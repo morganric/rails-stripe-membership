@@ -140,15 +140,15 @@ class ProfilesController < ApplicationController
       # @profile = Profile.find(params[:id])
 
     if params[:id] == nil
-         @profile = Profile.find_by(:id => request.subdomain)
+         @profile = Profile.friendly.find(request.subdomain)
       else
-        @profile = Profile.find(params[:id])
+        @profile = Profile.friendly.find(params[:id])
       end
 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:first_name, :second_name, :image, :bio, :domain, :twitter, :cover, :user_id)
+      params.require(:profile).permit(:first_name, :second_name, :image, :bio, :domain, :twitter, :cover, :user_id, :slug)
     end
 end

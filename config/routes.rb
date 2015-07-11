@@ -25,10 +25,10 @@ Rails.application.routes.draw do
     get '', to: 'profiles#show', :as =>  :vanity_profile
 
   end
-get 'project/:id', to: 'projects#show', as: :vanity_project
+    get 'project/:id', to: 'projects#show', as: :vanity_project
 
 
-    constraints(Subdomain) do  
+  constraints(Subdomain) do  
      get '/' => 'profiles#show', via: [:get, :post]
   end 
 

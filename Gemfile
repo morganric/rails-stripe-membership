@@ -16,6 +16,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'masonry-rails'
 gem 'pundit'
+gem 'friendly_id', '~> 5.1.0' 
 
 group :development, :test do
   gem 'byebug'
