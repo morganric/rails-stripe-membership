@@ -22,9 +22,9 @@ Rails.application.routes.draw do
   resources :users
 
 
-  get ':id/project/:project', to: 'projects#show', as: :vanity_project
-  get ':id/tagged/:tag', to: 'profiles#tag', :as => :vanity_tag
-  get ':id/category/:category', to: 'profiles#category', :as => :vanity_category
+  get ':user_id/project/:id', to: 'projects#show', as: :vanity_project
+  get ':user_id/tagged/:tag', to: 'profiles#tag', :as => :vanity_tag
+  get ':user_id/category/:id', to: 'profiles#category', :as => :vanity_category
 
 
  
