@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy, :tag, :category]
     before_action :allow_iframe
+    before_action :admin_only, :except => :show
 
   # GET /profiles
   # GET /profiles.json
@@ -120,6 +121,12 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+  def admin_only
+    unless @current_user.try(:admin?) 
+      redirect_to :root, :alert => "Access denied."
+    end
+  end
 
     def allow_iframe
       response.headers['X-Frame-Options'] = "ALLOWALL"
