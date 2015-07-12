@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :page, :edit, :update, :destroy, :tag, :category]
     before_action :allow_iframe
-    before_action :admin_only, :except => [:show, :page]
+    before_action :admin_only, :except => [:show, :page, :tag, :category]
 
   # GET /profiles
   # GET /profiles.json
@@ -154,7 +154,11 @@ class ProfilesController < ApplicationController
       # @profile = Profile.find(params[:id])
 
     if params[:id] == nil
+        if params[:user_id] != nil
+          @profile = Profile.friendly.find(params[:user_id])
+        else
          @profile = Profile.friendly.find(request.subdomain)
+       end
       else
         @profile = Profile.friendly.find(params[:id])
       end

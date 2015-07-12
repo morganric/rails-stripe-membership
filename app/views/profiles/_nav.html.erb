@@ -21,7 +21,7 @@
     
       <!-- links -->
       <% @categories.each do |cat| %>
-      <li class="menu"><%= link_to cat.name, "#{vanity_category_path( :id => cat.id, :user_id => @profile.username)}" %></li>
+      <li class="menu"><%= link_to cat.name, vanity_category_path( :category_id => cat.id, :user_id => @profile.username) %></li>
       <% end %>
 
      <li ><a href="#bio" data-toggle="tab">About</a></li>

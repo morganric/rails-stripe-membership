@@ -14,9 +14,14 @@ class ProfilePolicy
     true
   end
 
-   def embed?
+  def tag?
     true
   end
+
+  def category?
+    true
+  end
+
 
    def edit?
     @current_user.admin? or @current_user == @user

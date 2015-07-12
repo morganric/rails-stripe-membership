@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   resources :categories
   resources :projects
  resources :profiles
@@ -21,10 +22,11 @@ Rails.application.routes.draw do
  
   resources :users
 
+  scope ":id" do
+    get '/', to: 'profiles#show', :as =>  :vanity_profile
 
-  get ':user_id/project/:id', to: 'projects#show', as: :vanity_project
-  get ':user_id/tagged/:tag', to: 'profiles#tag', :as => :vanity_tag
-  get ':user_id/category/:id', to: 'profiles#category', :as => :vanity_category
+  end 
+
 
 
  
@@ -36,13 +38,12 @@ Rails.application.routes.draw do
 
   end
 
-  scope ":id" do
-    get '/', to: 'profiles#show', :as =>  :vanity_profile
 
-  end 
+  get ':user_id/project/:id', to: 'projects#show', as: :vanity_project
+  get ':user_id/tagged/:tag', to: 'profiles#tag', :as => :vanity_tag
+  get ':user_id/category/:category_id', to: 'profiles#category', :as => :vanity_category
 
-
-
+  
 
 
 
