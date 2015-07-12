@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
 
   def page
           @categories = Category.where(:user_id => @profile.user.id)
-       @projects = Project.where(:user_id => @profile.user.id)
+       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC')
        @tags = []
 
        @projects.each do |p|
