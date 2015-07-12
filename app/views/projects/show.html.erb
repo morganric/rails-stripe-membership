@@ -59,7 +59,8 @@
  <div class="col-md-6">
 
  <%= image_tag @project.image.url(:large) %>
-     <% unless @project.video == '' %>
+ 
+     <% if @project.video != nil %>
       <%= cl_image_tag("#{@project.title}.jpg", :resource_type=>"video") %> 
     <% end %>
  </div>
