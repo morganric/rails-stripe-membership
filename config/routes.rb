@@ -26,12 +26,9 @@ Rails.application.routes.draw do
     get '/', to: 'profiles#show', :as =>  :vanity_profile
 
   end 
-
-
-
  
   constraints(Subdomain) do  
-     get '' => 'profiles#page', via: [:get, :post]     
+     get '' => 'profiles#page', via: [:get, :post]  , as: :page_profile
     get '/project/:id', to: 'projects#show', via: [:get, :post], as: :page_project
     get '/tagged/:tag', to: 'profiles#tag', via: [:get, :post], :as => :page_tag
     get '/category/:category_id', to: 'profiles#category', via: [:get, :post], :as => :page_category

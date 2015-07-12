@@ -1,6 +1,41 @@
 
-<%= render 'nav' %>
 
+<div class="row">
+<div class="col-md-2" >
+
+<h1 style="border-right: solid 1px #eee;">
+  <%= link_to @profile.first_name, page_profile_path(@profile.username) %>
+<br/>
+  <%= link_to @profile.second_name, page_profile_path(@profile.username) %>
+</h1>
+
+
+</div>
+
+<div class="col-md-10">
+
+  
+
+ <br/><br/><br/> 
+
+ <ul class="nav nav-pills">
+    
+    
+      <!-- links -->
+      <% @categories.each do |cat| %>
+      <li class="menu"><%= link_to cat.name, page_category_path( :category_id => cat.id) %></li>
+      <% end %>
+
+     <li ><a href="#bio" data-toggle="tab">About</a></li>
+    
+  </ul>
+
+
+</div>
+
+</div>
+
+<hr/>
 <div class="row" >
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   
@@ -32,7 +67,7 @@
     <ul class="nav nav-stacked">
       <!-- links -->
       <% @tags.take(5).each do |tag| %>
-      <li role="presentation" ><%= link_to "##{tag}", vanity_tag_path(:tag => tag) %></li>
+      <li role="presentation" ><%= link_to "##{tag}", page_tag_path(:tag => tag) %></li>
       <% end %>
   </ul>
 
