@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
           @categories = Category.where(:user_id => @profile.user.id)
-       @projects = Project.where(:user_id => @profile.user.id)
+       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC')
        @tags = []
 
        @projects.each do |p|
