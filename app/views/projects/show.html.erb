@@ -2,9 +2,9 @@
 <div class="col-md-12 row clearfix">
 <div class="col-md-2" >
 <h1 style="border-right: solid 1px #eee;">
-  <%= link_to @project.user.profile.first_name, profile_path(@project.user.profile) %>
+  <%= link_to @project.user.profile.first_name, vanity_profile_path(@project.user.profile.username) %>
   <br/>
-  <%= link_to @project.user.profile.second_name, profile_path(@project.user.profile) %>
+  <%= link_to @project.user.profile.second_name, vanity_profile_path(@project.user.profile.username) %>
 </h1>
 </div>
 
