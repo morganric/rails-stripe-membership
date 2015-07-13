@@ -1,88 +1,46 @@
 
-<div class="row">
-<div class="col-md-2" >
-
-<h1 style="border-right: solid 1px #eee;">
-  <%= link_to @profile.first_name, page_profile_path(@profile.username) %>
-<br/>
-  <%= link_to @profile.second_name, page_profile_path(@profile.username) %>
-</h1>
-
-
-</div>
-
-<div class="col-md-10">
-
-  
-
- <br/><br/><br/> 
-
- <ul class="nav nav-pills">
-    
-    
-      <!-- links -->
-      <% @categories.each do |cat| %>
-      <li class="menu"><%= link_to cat.name, page_category_path( :category_id => cat.id) %></li>
-      <% end %>
-
-     <li ><a href="#bio" data-toggle="tab">About</a></li>
-    
-  </ul>
-
-
-</div>
-
-</div>
-
-<hr/>
-
-
+<%= render 'nav', :categories => @categories %>
 
 <div class="row" >
 <div class="tabbable"> <!-- Only required for left/right tabs -->
 
-  <div class="tab-content col-sm-12">
+  <div class="tab-content ">
     
     <div class="tab-pane " id="bio">
+    <div class="col-md-12" >
      <br/>
-     <div class="col-sm-3">
+     <div class="col-md-2 col-md-offset-2">
      <%= image_tag(@profile.image.url(:standard)) %>
+     <br/><br/>
+     <p>
+     <%= link_to @profile.domain, "http://#{@profile.domain}", target: '_blank' %>
+     </p>
      </div> 
-      <p class="well col-sm-9 ">
-		  <%= @profile.bio %>
-		 
-    		<span class="pull-right" >
+      <p class=" col-md-4 col-md-offset-1 ">
+      <%= @profile.bio %>
+     
+        <span class="pull-right" >
           <% if current_user and current_user.admin? %>
-    			<%= link_to 'Edit', edit_profile_path(@profile)  %> 
+          <%= link_to 'Edit', edit_profile_path(@profile)  %> 
           <% end %>
-    		</span>
-		</p>
+        </span>
+    </p>
+    </div>
     </div>
 
     
 
     <div class="tab-pane active" id="all">
-     <br/>
-      <div class="col-sm-2">
-      <br/>
+     
+    <div class="col-md-10 col-md-offset-1" >
 
-    <ul class="nav nav-stacked">
-      <!-- links -->
-      <% @tags.take(5).each do |tag| %>
-      <li role="presentation" ><%= link_to "##{tag}", page_tag_path(:tag => tag) %></li>
-      <% end %>
-  </ul>
-
-    </div>
-    <div class="col-md-10" >
-
-     <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+     <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
 
   
      <% @projects.each do |project| %>
       <div class=" pull-left col3 box" %>
       <% if project.video == nil || project.video == '' %> 
-     <%= link_to image_tag(project.image.url()), vanity_project_path(user_id: project.user.profile.slug, id: project.id) %>
+     <%= link_to image_tag(project.image.url(:standard), width: 250), vanity_project_path(user_id: project.user.profile.slug, id: project.id) %>
      <% else %>
      <%= link_to cl_image_tag("#{project.title}.jpg", :resource_type=>"video"), vanity_project_path(user_id: project.user.profile.slug, id: project.id) %>
      <% end %>
