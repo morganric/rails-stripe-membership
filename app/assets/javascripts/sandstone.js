@@ -40,7 +40,7 @@
   $container.imagesLoaded(function(){
     $container.masonry({
       itemSelector: '.box',
-      columnWidth: 300,
+      // columnWidth: 300,
       gutter: 15,
       isAnimated: !Modernizr.csstransitions,
       isFitWidth: true
