@@ -1,32 +1,23 @@
-<div class="col-md-6 col-md-offset-3 ">
 
 <br/>
 <h1  class="pull-center">
   <%= link_to "#{@profile.first_name} #{@profile.second_name}", vanity_profile_path(@profile.username) %> 
 </h1>
+<br/>
 
-</div>
-
-<div class="col-md-6 col-md-offset-3">
-
-  
-
- <ul class="nav nav-pills pull-center">
-    
-    
+<div style="text-align:center; margin:0 auto;">
+ <div class="nav nav-top pull-center">
       <!-- links -->
       <% @categories.each do |cat| %>
-      <li class="menu"><%= link_to cat.name, vanity_category_path( :category_id => cat.id, :user_id => @profile.username) %></li>
+      <div class="menu "><%= link_to cat.name, vanity_category_path( :category_id => cat.id, :user_id => @profile.username) %></div>
       <% end %>
 
-     <li ><a href="#bio" data-toggle="tab">About</a></li>
+     <div class="menu"><a href="#bio" data-toggle="tab" >About</a></div>
     
-  </ul>
-
+  </div>
+</div>
 <hr/>
-</div>
 
 
-</div>
 
 

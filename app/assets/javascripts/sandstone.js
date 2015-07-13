@@ -40,10 +40,10 @@
   $container.imagesLoaded(function(){
     $container.masonry({
       itemSelector: '.box',
-      // columnWidth: 300,
-      gutter: 5,
+      // columnWidth: 320,
+      gutter: 0	,
       isAnimated: !Modernizr.csstransitions,
-      isFitWidth: false
+      isFitWidth: true
     });
   });
 

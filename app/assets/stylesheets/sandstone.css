@@ -20,9 +20,39 @@
   background-color: white !important;
 }
 
-.pull-center {
-	margin: 0 auto;
-  width:50%;
+.menu {
+  display: inline-block !important;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.pull-center, .text-center {
+	margin: 0 auto !important;
+  text-align: center !important;
+   float: none !important;
+   display: block !important;
+}
+
+.navbar-white {
+  text-align: center !important;
+  background-color: #fff;
+  margin: 0 auto !important;
+  width:25%;  
+} 
+
+.navbar-white ul li a {
+    color: black !important;
+}
+
+.nav-top {
+text-align: center;
+  margin: 0 auto;
+}
+
+.nav-top li {
+  display: inline-block;
+  text-align: center;
+  float:left;
 }
 
 .white {
