@@ -15,7 +15,7 @@
      <%= link_to @profile.domain, "http://#{@profile.domain}", target: '_blank' %>
      </p>
      </div> 
-      <p class="well col-sm-9 ">
+      <p class=" col-sm-9 ">
 		  <%= @profile.bio %>
 		 
     		<span class="pull-right" >
@@ -30,17 +30,11 @@
 
     <div class="tab-pane active" id="all">
      <br/>
-      <div class="col-sm-2">
-      <br/>
+        <div class="col-sm-2">
+        <br/>
 
-    <ul class="nav nav-stacked">
-      <!-- links -->
-      <% @tags.take(5).each do |tag| %>
-      <li role="presentation" ><%= link_to "##{tag}", vanity_tag_path(user_id: @profile.slug, :tag => tag) %></li>
-      <% end %>
-  </ul>
-
-    </div>
+      
+      </div>
     <div class="col-md-10" >
 
      <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
