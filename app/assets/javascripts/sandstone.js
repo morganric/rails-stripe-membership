@@ -43,7 +43,7 @@
       // columnWidth: 300,
       gutter: 15,
       isAnimated: !Modernizr.csstransitions,
-      // isFitWidth: true
+      isFitWidth: true
     });
   });
 
