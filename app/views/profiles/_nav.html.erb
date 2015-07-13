@@ -1,22 +1,20 @@
 <div class="row">
-<div class="col-md-2" >
 
-<h1 style="border-right: solid 1px #eee;">
-  <%= link_to @profile.first_name, vanity_profile_path(@profile.username) %>
-<br/>
+<br/><br/>
+<h1  class="pull-center">
+  <%= link_to @profile.first_name, vanity_profile_path(@profile.username) %> 
   <%= link_to @profile.second_name, vanity_profile_path(@profile.username) %>
 </h1>
 
-
 </div>
 
-<div class="col-md-10">
+<div class="col-md-12 container ">
 
   
 
- <br/><br/><br/> 
+ <br/><br/>
 
- <ul class="nav nav-pills">
+ <ul class="nav nav-pills pull-center">
     
     
       <!-- links -->
@@ -28,10 +26,10 @@
     
   </ul>
 
-
-</div>
-
-</div>
-
 <hr/>
+</div>
+
+
+</div>
+
 
