@@ -17,7 +17,10 @@
 
 
   $(document).ready(function(){
-    $('#masonry-container').masonry({
+
+
+    $('#masonry-container').imagesLoaded(
+    	function(){$('#masonry-container').masonry({
 	  itemSelector: '.box',
 	  // gutterWidth: 15,
 	  isAnimated: !Modernizr.csstransitions,
@@ -27,8 +30,8 @@
 	    return containerWidth / 6;
 
 	  }
-	});
-
+		});
+	  });
 
 
 
