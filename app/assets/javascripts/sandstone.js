@@ -21,7 +21,7 @@
 	  itemSelector: '.box',
 	  // gutterWidth: 15,
 	  isAnimated: !Modernizr.csstransitions,
-	    // isFitWidth: true,
+	    isFitWidth: true,
 	  // set columnWidth a fraction of the container width
 	  columnWidth: function( containerWidth ) {
 	    return containerWidth / 6;

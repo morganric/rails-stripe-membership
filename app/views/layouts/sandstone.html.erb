@@ -79,5 +79,27 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "sandstone" %>
     <%= yield(:page_javascript) if content_for?(:page_javascript) %>
+
+    <script type="text/javascript">
+
+  $(document).ready(function(){
+    $('#masonry-container').masonry({
+    itemSelector: '.box',
+    // gutterWidth: 15,
+    isAnimated: !Modernizr.csstransitions,
+      isFitWidth: true,
+    // set columnWidth a fraction of the container width
+    columnWidth: function( containerWidth ) {
+      return containerWidth / 6;
+
+    }
+  });
+
+  });
+
+
+
+
+    </script>
   </body>
 </html>
