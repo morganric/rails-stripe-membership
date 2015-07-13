@@ -5,14 +5,11 @@
 
   <ul>
     <% @categories.each do |category| %>
-      <li><%= category.name %>
-      <%= category.user_id %>
-        <%= category.slug %>
-        <%= link_to 'Show', category %>
-        <%= link_to 'Edit', edit_category_path(category) %>
+      <li><h3><%= category.name %></h3><br/>
+        <%= link_to 'Show', category %> |
+        <%= link_to 'Edit', edit_category_path(category) %> |
         <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></li>
         <% end %>
 </ul>
 <br>
 
-<%= link_to 'New Category', new_category_path %>

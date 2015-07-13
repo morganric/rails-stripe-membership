@@ -1,21 +1,22 @@
 
 <%= render 'nav', :categories => @categories %>
 
-<div class=" container" >
+<div class="row" >
 <div class="tabbable"> <!-- Only required for left/right tabs -->
 
-  <div class="tab-content col-sm-12">
+  <div class="tab-content ">
     
     <div class="tab-pane " id="bio">
+    <div class="col-md-8" >
      <br/>
-     <div class="col-sm-3">
+     <div class="col-md-2 col-md-offset-4">
      <%= image_tag(@profile.image.url(:standard)) %>
      <br/><br/>
      <p>
      <%= link_to @profile.domain, "http://#{@profile.domain}", target: '_blank' %>
      </p>
      </div> 
-      <p class=" col-sm-9 ">
+      <p class=" col-md-5 col-md-offset-1 ">
 		  <%= @profile.bio %>
 		 
     		<span class="pull-right" >
@@ -25,12 +26,13 @@
     		</span>
 		</p>
     </div>
+    </div>
 
     
 
     <div class="tab-pane active" id="all">
-     <br/>
-    <div class="col-md-12" >
+     
+    <div class="col-md-8 col-md-offset-2" >
 
      <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
 

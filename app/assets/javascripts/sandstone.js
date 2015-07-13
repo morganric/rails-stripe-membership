@@ -41,9 +41,9 @@
     $container.masonry({
       itemSelector: '.box',
       // columnWidth: 300,
-      gutter: 15,
+      gutter: 5,
       isAnimated: !Modernizr.csstransitions,
-      isFitWidth: true
+      isFitWidth: false
     });
   });
 

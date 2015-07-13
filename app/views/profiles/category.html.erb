@@ -1,51 +1,45 @@
 
-<div class="row">
-<div class="col-md-2" >
+<div class="col-md-6 col-md-offset-3 ">
 
-<h1 style="border-right: solid 1px #eee;">
-  <%= link_to @profile.first_name, page_profile_path(@profile.username) %>
 <br/>
-  <%= link_to @profile.second_name, page_profile_path(@profile.username) %>
+<h1  class="pull-center">
+  <%= link_to "#{@profile.first_name} #{@profile.second_name}", vanity_profile_path(@profile.username) %> 
 </h1>
-
 
 </div>
 
-<div class="col-md-10">
+<div class="col-md-6 col-md-offset-3">
 
   
 
- <br/><br/><br/> 
-
- <ul class="nav nav-pills">
+ <ul class="nav nav-pills pull-center">
     
     
       <!-- links -->
       <% @categories.each do |cat| %>
-      <li class="menu"><%= link_to cat.name, page_category_path( :category_id => cat.id) %></li>
+      <li class="menu"><%= link_to cat.name, vanity_category_path( :category_id => cat.id, :user_id => @profile.username) %></li>
       <% end %>
 
      <li ><a href="#bio" data-toggle="tab">About</a></li>
     
   </ul>
 
-
-</div>
-
-</div>
-
 <hr/>
-<div class="row" >
+</div>
+
+
+</div>
+
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   
-  <div class="tab-content col-sm-12">
+  <div class="tab-content col-md-8 col-md-offset-2">
     
     <div class="tab-pane " id="bio">
      <br/>
-     <div class="col-sm-3">
+     <div class="col-md-2 col-md-offset-2">
      <%= image_tag(@profile.image.url(:standard)) %>
      </div> 
-      <p class="well col-sm-9 ">
+      <p class="well col-sm-5 col-md-offset-1 ">
 		  <%= @profile.bio %>
 		 
     		<span class="pull-right" >
@@ -59,19 +53,8 @@
    
     <div class="tab-pane active" id="all">
      <br/>
-      <div class="col-sm-2">
-      <br/>
-       
-    <ul class="nav nav-stacked">
-      <!-- links -->
-      <% @tags.take(5).each do |tag| %>
-      <li role="presentation" ><%= link_to "##{tag}", page_tag_path(:tag => tag) %></li>
-      <% end %>
-  </ul>
 
-
-    </div>
-    <div class="col-md-10" >
+    <div class="col-md-8 col-md-offset-2" >
 
      <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
 
@@ -99,7 +82,7 @@
 
 
 </div>
-</div>
+
 
 
 
