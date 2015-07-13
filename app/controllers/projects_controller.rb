@@ -36,9 +36,7 @@ class ProjectsController < ApplicationController
             :resource_type => :video, :public_id => @project.title)
 
     @project.video = json['url']
-    image_url = "http://res.cloudinary.com/vidgeo/video/upload/" << json['version'].to_s << "/" << json['public_id'].to_s << ".jpg" 
-
-    @project.cover = image_url
+   
     end
 
     respond_to do |format|
