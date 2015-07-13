@@ -20,7 +20,8 @@
 
 
     $('#masonry-container').imagesLoaded(
-    	function(){$('#masonry-container').masonry({
+    	function(){
+    		$('#masonry-container').masonry({
 	  itemSelector: '.box',
 	  // gutterWidth: 15,
 	  isAnimated: !Modernizr.csstransitions,
