@@ -32,8 +32,8 @@ class ProjectsController < ApplicationController
 
     if project_params[:video] != nil
     file = project_params[:video].tempfile.open
-    json = Cloudinary::Uploader.upload(file, 
-            :resource_type => :video, :public_id => @project.title)
+    json = Cloudinary::Uploader.upload_large(file, 
+            :resource_type => :video, :chunk_size => 6_000_000, :public_id => @project.title)
 
     @project.video = json['url']
    
