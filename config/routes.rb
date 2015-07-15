@@ -28,10 +28,10 @@ Rails.application.routes.draw do
   end 
  
   constraints(Subdomain) do  
-     get '' => 'profiles#page', via: [:get, :post]  , as: :page_profile
-    get '/project/:id', to: 'projects#show', via: [:get, :post], as: :page_project
-    get '/tagged/:tag', to: 'profiles#tag', via: [:get, :post], :as => :page_tag
-    get '/category/:category_id', to: 'profiles#category', via: [:get, :post], :as => :page_category
+     get '' => 'sites#profile', via: [:get, :post]  , as: :site_profile
+    get '/project/:id', to: 'sites#project', via: [:get, :post], as: :site_project
+    get '/tagged/:tag', to: 'sites#tag', via: [:get, :post], :as => :site_tag
+    get '/category/:category_id', to: 'sites#category', via: [:get, :post], :as => :site_category
 
   end
 

@@ -1,0 +1,78 @@
+
+<div class="row clearfix">
+<div class="col-md-2" >
+<h2 style="">
+  <%= link_to @project.user.profile.first_name, site_profile_path() %>
+  <br/>
+  <%= link_to @project.user.profile.second_name, site_profile_path() %>
+</h2>
+</div>
+
+
+<div class="col-md-10">
+
+    <h1><%= @project.title %></h1>
+
+   
+ <%  @project.tag_list.each do |tag| %>
+	<label class="label label-default"><%= tag %></label>
+<% end %>
+</div>
+
+</div>
+
+<div class="row">
+
+<hr/><br/>
+<div class="col-md-6">
+
+ <%= image_tag @project.image.url(:large) %>
+
+     <% unless @project.video.blank? %>
+      <%= cl_image_tag("#{@project.title}.jpg", :resource_type=>"video") %> 
+    <% end %>
+ </div>
+
+
+ <div class="col-md-5 col-md-offset-1">
+
+
+<br>
+<% unless @project.video.blank? %>
+
+<div align="center" class="embed-responsive embed-responsive-16by9" >
+      <%= cl_video_tag(@project.video, :video_codec=>"auto", :controls => true, style: 'background-color:black;', :width => 750,
+            :height => 500, :poster => @project.image.url()) %>
+     <!--    <div id="video_overlays">
+          <img src="http://res.cloudinary.com/vidgeo/image/upload/c_scale,e_gamma:-50,o_24,w_50/v1433273158/eye_tk7kls.png"/>
+      </div> -->
+</div>
+
+<% end %>
+
+<br>
+<p class="">
+
+  <%= @project.description %>
+</p>
+
+<%= link_to 'Back', url_for(:back) %>
+<% if user_signed_in? %>
+  <% if current_user.try(:admin?) %>
+ | <%= link_to 'Edit', edit_project_path(@project) %> | 
+<%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<% end %>
+
+ </div>
+
+ 
+
+  
+ </div>
+
+
+
+
+
+

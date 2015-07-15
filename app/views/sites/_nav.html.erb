@@ -1,0 +1,23 @@
+
+<br/>
+<h1  class="pull-center">
+  <%= link_to "#{@profile.first_name} #{@profile.second_name}", site_profile_path(@profile.username) %> 
+</h1>
+<br/>
+
+<div style="text-align:center; margin:0 auto;">
+ <div class="nav nav-top pull-center">
+      <!-- links -->
+      <% @categories.each do |cat| %>
+      <div class="menu "><%= link_to cat.name, site_category_path( :category_id => cat.slug) %></div>
+      <% end %>
+
+     <div class="menu"><a href="#bio" data-toggle="tab" >About</a></div>
+    
+  </div>
+</div>
+<hr/>
+
+
+
+

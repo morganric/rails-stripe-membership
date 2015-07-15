@@ -1,0 +1,71 @@
+
+<%= render 'nav', :categories => @categories %>
+
+<div class="row" >
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+
+  <div class="tab-content ">
+    
+    <div class="tab-pane " id="bio">
+    <div class="col-md-12" >
+     <br/>
+     <div class="col-md-2 col-md-offset-2">
+     <%= image_tag(@profile.image.url(:standard)) %>
+     <br/><br/>
+     <p>
+     <%= link_to @profile.domain, "http://#{@profile.domain}", target: '_blank' %>
+     </p>
+     </div> 
+      <p class=" col-md-4 col-md-offset-1 ">
+      <%= @profile.bio %>
+     
+        <span class="pull-right" >
+          <% if current_user and current_user.admin? %>
+          <%= link_to 'Edit', edit_profile_path(@profile)  %> 
+          <% end %>
+        </span>
+    </p>
+    </div>
+    </div>
+
+    
+
+    <div class="tab-pane active" id="all">
+     
+    <div class="col-md-10 col-md-offset-1" >
+
+     <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
+
+  
+     <% @projects.each do |project| %>
+      <div class=" pull-left col3 box" %>
+      <% if project.video == nil || project.video == '' %> 
+     <%= link_to image_tag(project.image.url(:standard), width: 250), site_project_path( id: project.id) %>
+     <% else %>
+     <%= link_to cl_image_tag("#{project.title}.jpg", :resource_type=>"video"), site_project_path( id: project.id) %>
+     <% end %>
+      <h3 class="hidden"><%= link_to project.title, site_project_path( id: project.id) %></h3>
+      </div>
+     <% end %>
+
+</div>
+</div>
+    </div>
+
+
+
+  </div>
+</div>
+
+
+<p>
+  <%= @profile.twitter %>
+</p>
+
+
+</div>
+</div>
+
+
+
+
