@@ -50,9 +50,9 @@ text-align: center;
 }
 
 .nav-top li {
-  display: inline-block;
-  text-align: center;
-  float:left;
+  display: inline-block !important;
+  text-align: center !important;
+  float:left !important;
 }
 
 .white {
@@ -72,7 +72,9 @@ h1 a, h2 a, h3 a, a {
   color: black !important;
 }
 
-li.active a {
+
+
+.active a {
   text-decoration: underline;
 }
 
