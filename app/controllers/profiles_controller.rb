@@ -74,7 +74,8 @@ class ProfilesController < ApplicationController
 
   def category
     @tags = []
-    @projects = Project.where(:user_id => @profile.user.id, :category_id => params[:category_id])
+    @category = Category.friendly.find(params[:category_id])
+    @projects = Project.where(:user_id => @profile.user.id, :category_id => @category.id)
     @categories = Category.where(:user_id => @profile.user.id)
        @projects.each do |p|
         p.tag_list.each do |tag|

@@ -1,0 +1,38 @@
+<div class="col-md-12" >
+<br/>
+<h1 class="pull-center"><%= image_tag('ffollio-black.png', width: 40) %> FFOLLIO<br/>
+<small>Create a Portfolio</small>
+</h1>
+<br/>
+</div>
+
+<div style="text-align:center; margin:0 auto;">
+  <!-- Nav tabs -->
+  <ul class="nav nav nav-top pull-center" >
+    <li role="presentation" class=""><a href="<%= root_path %>">Latest</a></li>
+    <li role="presentation" class="active"><a href="<%= popular_path %>">Popular</a></li>
+    <li role="presentation" ><a href="<%= random_path %>" >Random</a></li>
+   
+  </ul>
+<br/>
+</div>
+   <!-- Tab panes -->
+      
+  <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
+
+  
+     <% @popular.each do |project| %>
+       <div class="col3 box" %>
+      <% if project.video == nil || project.video == '' %> 
+     <%= link_to image_tag(project.image.url(:standard), width: '300'), project_path(project) %>
+     <% else %>
+     <%= link_to cl_image_tag("#{project.title}.jpg",:crop => :fill, :resource_type=>"video", :overlay => "play_square.png", :crop => :fill , :html_width => '300', :html_height => '200'), project_path(project) %>
+     <% end %>
+      <h3 class="hidden"><%= link_to project.title, project_path(project) %></h3>
+      </div>
+     <% end %>
+
+</div>
+
+
+

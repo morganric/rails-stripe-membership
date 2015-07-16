@@ -9,7 +9,7 @@
  <div class="nav nav-top pull-center">
       <!-- links -->
       <% @categories.each do |cat| %>
-      <div class="menu "><%= link_to cat.name, site_category_path( :category_id => cat.slug) %></div>
+      <div class="menu "><%= link_to cat.name, site_category_path(:category_id => cat.slug) %></div>
       <% end %>
 
      <div class="menu"><a href="#bio" data-toggle="tab" >About</a></div>

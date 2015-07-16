@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+ get '/popular', to: 'projects#popular', :as => :popular
+  get '/random', to: 'projects#random', :as => :random
+
 
 
   resources :categories
@@ -40,7 +43,6 @@ Rails.application.routes.draw do
   get ':user_id/tagged/:tag', to: 'profiles#tag', :as => :vanity_tag
   get ':user_id/category/:category_id', to: 'profiles#category', :as => :vanity_category
 
-  
 
 
 

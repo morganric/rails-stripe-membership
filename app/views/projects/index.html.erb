@@ -8,84 +8,22 @@
 
 <div style="text-align:center; margin:0 auto;">
   <!-- Nav tabs -->
-  <ul class="nav nav nav-top pull-center" role="tablist">
-    <li role="presentation" class="active"><a href="#latest" aria-controls="latest" role="tab" data-toggle="tab">Latest</a></li>
-    <li role="presentation"><a href="#popular" aria-controls="popular" role="tab" data-toggle="tab">Popular</a></li>
-    <li role="presentation"><a href="#random" aria-controls="random" role="tab" data-toggle="tab">Random</a></li>
+  <ul class="nav nav nav-top pull-center" >
+    <li role="presentation" class="active"><a href="<%= root_path %>">Latest</a></li>
+    <li role="presentation"><a href="<%= popular_path %>">Popular</a></li>
+    <li role="presentation"><a href="<%= random_path %>" >Random</a></li>
    
   </ul>
 <br/>
 </div>
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="latest">
+   <!-- Tab panes -->
       
-  <div id="masonry-container" class="transitions-enabled infinite-scroll centered xclearfix">
+  <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
 
-  
-     <% @projects.each do |project| %>
-       <div class="col3 box" %>
-      <% if project.video == nil || project.video == '' %> 
-     <%= link_to image_tag(project.image.url(:standard), width: '300'), project_path(project) %>
-     <% else %>
-     <%= link_to cl_image_tag("#{project.title}.jpg",:crop => :fill, :resource_type=>"video", :overlay => "play_square.png", :crop => :fill , :html_width => '300', :html_height => '200'), project_path(project) %>
-     <% end %>
-      <h3 class="hidden"><%= link_to project.title, project_path(project) %></h3>
-      </div>
-     <% end %>
-
+  <%= render 'projects' %>
 
 </div>
 
-
-<br>
-    </div>
-    <div role="tabpanel" class="tab-pane " id="random">
-      
-  <div id="masonry-container" class="transitions-enabled infinite-scroll col-md-10 col-md-offset-1  centered clearfix">
-
-  
-     <% @random.each do |project| %>
-       <div class="col3 box" %>
-      <% if project.video == nil || project.video == '' %> 
-     <%= link_to image_tag(project.image.url(:standard), width: '300'), project_path(project) %>
-     <% else %>
-     <%= link_to cl_image_tag("#{project.title}.jpg",:crop => :fill, :resource_type=>"video", :overlay => "play_square.png", :crop => :fill , :html_width => '300', :html_height => '200'), project_path(project) %>
-     <% end %>
-      <h3 class="hidden"><%= link_to project.title, project_path(project) %></h3>
-      </div>
-     <% end %>
-
-
-</div>
-
-
-<br>
-    </div>
-    <div role="tabpanel" class="tab-pane " id="popular">
-
-  <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix col-md-10 col-md-offset-1 ">
-
-  
-     <% @popular.each do |project| %>
-       <div class="col3 box " %>
-      <% if project.video == nil || project.video == '' %> 
-     <%= link_to image_tag(project.image.url(:standard), width: '300'), project_path(project) %>
-     <% else %>
-     <%= link_to cl_image_tag("#{project.title}.jpg",:crop => :fill, :resource_type=>"video", :overlay => "play_square.png", :crop => :fill , :html_width => '300', :html_height => '200'), project_path(project) %>
-     <% end %>
-      <h3 class="hidden"><%= link_to project.title, project_path(project) %></h3>
-      </div>
-     <% end %>
-
-</div>
-
-
-<br>
-    </div>
-  </div>
-
-</div>
 
 
 
