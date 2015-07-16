@@ -72,6 +72,9 @@ h1 a, h2 a, h3 a, a {
   color: black !important;
 }
 
+li.active a {
+  text-decoration: underline;
+}
 
 #masonry-container {
   background: #FFF;
