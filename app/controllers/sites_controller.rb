@@ -13,7 +13,8 @@ class SitesController < ApplicationController
   end
 
   def profile
-          @categories = Category.where(:user_id => @profile.user.id)
+        
+        @categories = Category.where(:user_id => @profile.user.id)
        @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC')
        @tags = []
 

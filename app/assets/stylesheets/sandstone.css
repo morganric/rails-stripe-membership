@@ -59,13 +59,19 @@ text-align: center;
   color: white !important;
 }
 
+
 h1 a, h2 a, h3 a, a {
 	color:black !important;
 }
 
-nav a {
+.navbar a {
   color: white !important;
 }
+
+.dropdown li a {
+  color: black !important;
+}
+
 
 #masonry-container {
   background: #FFF;

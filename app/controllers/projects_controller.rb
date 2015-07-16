@@ -7,12 +7,19 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all.order('created_at DESC')
+    @popular = Project.all.order('created_at DESC')
+    @random = Project.all.shuffle
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+      
+      @project.views = @project.views.to_i + 1
+      @project.save
+       
        render layout: 'blank'
+
   end
 
   # GET /projects/new
@@ -29,6 +36,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.user_id = current_user.id
+    @project.views = 1
 
     if project_params[:video] != nil
     file = project_params[:video].tempfile.open
@@ -87,6 +95,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title,:tag_list, :description, :cover, :images, :image, :video, :user_id, :slug, :category_id)
+      params.require(:project).permit(:title,:tag_list, :views, :description, :cover, :images, :image, :video, :user_id, :slug, :category_id)
     end
 end

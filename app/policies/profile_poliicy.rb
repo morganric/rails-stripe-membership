@@ -3,7 +3,7 @@ class ProfilePolicy
 
   def initialize(current_user, model)
     @current_user = current_user
-    @user = model
+    @profile = model
   end
 
   def index?
@@ -24,7 +24,7 @@ class ProfilePolicy
 
 
    def edit?
-    @current_user.admin? or @current_user == @user
+    @current_user.admin? or @current_user == @profile.user
   end
 
   def update?
@@ -32,7 +32,7 @@ class ProfilePolicy
   end
 
   def destroy?
-    return false if @current_user == @user
+    return false if @current_user == @profile.user
     @current_user.admin?
   end
 

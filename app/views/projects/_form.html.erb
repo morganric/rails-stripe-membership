@@ -46,6 +46,8 @@
     <%= f.label :category %><br>
     <%= f.collection_select :category_id, Category.where(:user_id => current_user.id), :id, :name, include_blank: true %>
   </div>
+  <br/>
+   <p><%= link_to 'New Category', new_category_path %></p>
   <hr/>
   <div class="actions">
     <%= f.submit %>

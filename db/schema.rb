@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150711124219) do
+ActiveRecord::Schema.define(version: 20150716155235) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -170,6 +170,7 @@ ActiveRecord::Schema.define(version: 20150711124219) do
     t.datetime "updated_at",  null: false
     t.string   "tag_list"
     t.integer  "category_id"
+    t.integer  "views"
   end
 
   create_table "taggings", force: :cascade do |t|

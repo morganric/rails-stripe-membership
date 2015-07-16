@@ -13,9 +13,9 @@
 
     <h1><%= @project.title %></h1>
 
-   
+   <label class="label label-primary"><i class="icon-eye"></i><%= @project.views %> views</label>
  <%  @project.tag_list.each do |tag| %>
-	<label class="label label-default"><%= tag %></label>
+	<label class="label label-default"><%= link_to tag, vanity_tag_path(tag: tag, user_id: @project.user.profile.slug), :class=>"white"%></label>
 <% end %>
 </div>
 
@@ -27,17 +27,6 @@
 <div class="col-md-6">
 
  <%= image_tag @project.image.url(:large) %>
-
-     <% unless @project.video.blank? %>
-      <%= cl_image_tag("#{@project.title}.jpg", :resource_type=>"video") %> 
-    <% end %>
- </div>
-
-
- <div class="col-md-5 col-md-offset-1">
-
-
-<br>
 <% unless @project.video.blank? %>
 
 <div align="center" class="embed-responsive embed-responsive-16by9" >
@@ -49,8 +38,11 @@
 </div>
 
 <% end %>
+ </div>
 
-<br>
+
+ <div class="col-md-5 col-md-offset-1">
+
 <p class="">
 
   <%= @project.description %>

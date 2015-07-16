@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :page, :edit, :update, :destroy, :tag, :category]
     before_action :allow_iframe
-    before_action :admin_only, :except => [:show, :page, :tag, :category]
+    before_action :admin_only, :except => [:show, :page, :tag, :category, :edit]
 
   # GET /profiles
   # GET /profiles.json
