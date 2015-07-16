@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all.order('created_at DESC')
-    @popular = @projects.order('views DESC')
+    @popular = Project.all.order('views DESC')
     @random = @projects.shuffle
   end
 
