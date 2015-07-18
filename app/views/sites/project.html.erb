@@ -1,30 +1,24 @@
 
 <div class="row clearfix">
-<div class="col-md-2" >
-<h2 style="">
-  <%= link_to @project.user.profile.first_name, site_profile_path() %>
-  <br/>
-  <%= link_to @project.user.profile.second_name, site_profile_path() %>
-</h2>
-</div>
+<div class="col-md-12">
 
-
-<div class="col-md-10">
-
-    <h1><%= @project.title %></h1>
-
-   
- <%  @project.tag_list.each do |tag| %>
-	<label class="label label-default"><%= tag %></label>
+ <h1><%= @project.title %>
+<br/>
+<% if @project.category != nil %>
+<small>
+  <%= link_to @project.category.name, site_category_path(@project.category.id) %>
+</small>
+</h1>
 <% end %>
+   
+
 </div>
 
 </div>
 
 <div class="row">
 
-<hr/><br/>
-<div class="col-md-6">
+<div class="col-md-8">
 
  <%= image_tag @project.image.url(:large) %>
 
@@ -34,7 +28,7 @@
  </div>
 
 
- <div class="col-md-5 col-md-offset-1">
+ <div class="col-md-4 ">
 
 
 <br>
@@ -56,6 +50,10 @@
   <%= @project.description %>
 </p>
 
+ <%  @project.tag_list.each do |tag| %>
+  #<%= tag %></label>
+<% end %>
+<br/>
 <%= link_to 'Back', url_for(:back) %>
 <% if user_signed_in? %>
   <% if current_user.try(:admin?) %>
