@@ -27,11 +27,11 @@
      <% @popular.each do |project| %>
        <div class="col3 box" %>
       <% if project.video == nil || project.video == '' %> 
-     <%= link_to image_tag(project.image.url(:standard), width: '300'), project_path(project) %>
+     <%= link_to image_tag(project.image.url(:standard), width: '300'), vanity_project_path(:user_id => project.user.profile.slug, :id => project.id) %>
      <% else %>
-     <%= link_to cl_image_tag("#{project.title}.jpg",:crop => :fill, :resource_type=>"video", :overlay => "play_square.png", :crop => :fill , :html_width => '300', :html_height => '200'), project_path(project) %>
+     <%= link_to cl_image_tag("#{project.title}.jpg",:crop => :fill, :resource_type=>"video", :overlay => "play_square.png", :crop => :fill , :html_width => '300', :html_height => '200'), vanity_project_path(:user_id => project.user.profile.slug, :id => project.id) %>
      <% end %>
-      <h3 class="hidden"><%= link_to project.title, project_path(project) %></h3>
+      <h3 class="hidden"><%= link_to project.title, vanity_project_path(:user_id => project.user.profile.slug, :id => project.id) %></h3>
       </div>
      <% end %>
 
