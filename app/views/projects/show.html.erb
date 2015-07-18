@@ -40,7 +40,7 @@
 
 <p class="">
 
-  <%= @project.description %>
+  <%=simple_format h @project.description %>
 </p>
 
 <%= link_to 'Back', url_for(:back) %>
