@@ -17,7 +17,7 @@
      </p>
      </div> 
       <p class=" col-md-4 col-md-offset-1 ">
-      <%= @profile.bio %>
+      <%=simple_format h @profile.bio %>
      
         <span class="pull-right" >
           <% if current_user and current_user.admin? %>

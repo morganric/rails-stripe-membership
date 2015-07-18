@@ -14,7 +14,7 @@
      <%= image_tag(@profile.image.url(:standard)) %>
      </div> 
       <p class="well col-sm-9 ">
-		  <%= @profile.bio %>
+		  <%=simple_format h @profile.bio %>
 		 
     		<span class="pull-right" >
           <% if current_user and current_user.admin? %>
