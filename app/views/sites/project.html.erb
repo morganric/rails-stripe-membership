@@ -47,7 +47,7 @@
 <br>
 <p class="">
 
-  <%= @project.description %>
+  <%=simple_format h @project.description %>
 </p>
 
  <%  @project.tag_list.each do |tag| %>
