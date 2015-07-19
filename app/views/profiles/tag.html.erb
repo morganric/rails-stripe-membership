@@ -48,8 +48,8 @@
   
      <% @projects.each do |project| %>
       <div class=" pull-left col3 box" %>
-     <%= link_to image_tag(project.image.url(:standard)), project_path(project) %>
-      <h3 class="hidden"><%= link_to project.title, project_path(project) %></h3>
+     <%= link_to image_tag(project.image.url(:standard)), vanity_project_path(user_id: project.user.profile.slug, id: project.id) %>
+      <h3 class="hidden"><%= link_to project.title, vanity_project_path(user_id: project.user.profile.slug, id: project.id) %></h3>
       </div>
      <% end %>
 
