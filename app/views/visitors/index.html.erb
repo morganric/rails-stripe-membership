@@ -17,17 +17,29 @@
   </div>
   <div class=" col-sm-12 plans">
     <div class="col-sm-3  well">
+      <div class="plan"><h2>Free</h2></div>
+      <ol class="list-unstyled list-group">
+        <li class="list-group-item">&#10004; Unlimited file hosting</li>
+        <li class="list-group-item">&#10004; No credit-card needed</li>
+        <li class="list-group-item">&#10004; Profile & Project pages</li>
+      </ol>
+      <hr/>
+      <h3>$0/month</h3>
+      <%= link_to 'Subscribe', new_user_registration_path(plan: 'free'), :class => 'white btn btn-primary' %>
+    </div>
+
+    <div class="col-sm-3   well">
       <div class="plan"><h2>Silver</h2></div>
       <ol class="list-unstyled list-group">
         <li class="list-group-item">&#10004; Unlimited file hosting</li>
-        <li class="list-group-item">&#10004; Customised Subdomains</li>
+        <li class="list-group-item">&#10004; Micro-ste via subdomains</li>
         <li class="list-group-item">&#10004; Profile & Project pages</li>
       </ol>
       <hr/>
       <h3>$9/month</h3>
       <%= link_to 'Subscribe', new_user_registration_path(plan: 'silver'), :class => 'white btn btn-primary' %>
     </div>
-    <div class="col-sm-3 col-sm-offset-1 well featured">
+    <div class="col-sm-3  well featured">
       <div class="plan featured-plan"><h2>Gold</h2></div>
       <ol class="list-unstyled list-group">
         <li class="list-group-item">&#10004; Silver Plan plus...</li>
@@ -38,7 +50,7 @@
       <h3>$19/month</h3>
       <%= link_to 'Subscribe', new_user_registration_path(plan: 'gold'), :class => 'white btn btn-primary' %>
     </div>
-    <div class="col-sm-3 col-sm-offset-1 well">
+    <div class="col-sm-3  well">
       <div class="plan"><h2>Platinum</h2></div>
       <ul class="list-unstyled list-group">
          <li class="list-group-item">&#10004; Gold Plan plus...</li>
