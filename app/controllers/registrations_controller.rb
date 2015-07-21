@@ -26,7 +26,7 @@ class RegistrationsController < Devise::RegistrationsController
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
         expire_data_after_sign_in!
-        subscribe
+        subscribe 
       end
     else
       clean_up_passwords resource
@@ -56,15 +56,23 @@ class RegistrationsController < Devise::RegistrationsController
 
   def sign_up_params
     params.require(:user).permit(:email,
-    :password, :password_confirmation, :plan_id)
+    :password, :password_confirmation, :plan_id, :name)
   end
 
   def subscribe
-    return if resource.admin?
-    params[:plan] = current_user.plan
-    subscription = Payola::CreateSubscription.call(params, current_user)
-    current_user.save
-    render_payola_status(subscription)
+
+    # return if resource.admin?
+
+    if resource.role == "free" || resource.admin?
+      redirect_to root_path and return
+    else
+
+      params[:plan] = current_user.plan
+      subscription = Payola::CreateSubscription.call(params, current_user)
+      current_user.save
+      render_payola_status(subscription)
+    end
+
   end
 
   def cancel_subscription

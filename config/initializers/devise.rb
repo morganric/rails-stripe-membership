@@ -240,6 +240,15 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
+  
+  require "omniauth"
+  require "omniauth-facebook"
+  require "omniauth-stripe-connect"
+
+  config.omniauth :stripe_connect, ENV['STRIPE_CONNECT_CLIENT_ID'], ENV['STRIPE_SECRET'], :scope => 'read_write'
+  config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret, :strategy_class => OmniAuth::Strategies::Facebook,
+            :scope => 'email, publish_actions, manage_pages, status_update'
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

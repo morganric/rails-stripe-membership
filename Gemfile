@@ -17,6 +17,11 @@ gem 'cloudinary'
 gem 'masonry-rails'
 gem 'pundit'
 gem 'friendly_id', '~> 5.1.0' 
+gem 'omniauth'
+gem 'omniauth-stripe-connect'
+gem 'omniauth-facebook' 
+gem 'kaminari'
+gem 'payola-payments', :git => "git://github.com/archonic/payola.git", :branch => "subscriptions-free"
 
 group :development, :test do
   gem 'byebug'
@@ -26,7 +31,7 @@ end
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'gibbon'
-gem 'payola-payments'
+# gem 'payola-payments'
 gem 'sucker_punch'
 gem 'thin'
 gem 'upmin-admin'
