@@ -19,21 +19,26 @@
     <%= f.label :second_name %><br>
     <%= f.text_field :second_name %>
   </div>
+  <br/>
   <div class="field">
     <%= f.label :image %><br>
     <%= f.file_field :image %>
+    <br/>
+    <%= image_tag(@profile.image.url(:thumb)) %>
+  
   </div>
+    <br/>
   <div class="field">
     <%= f.label :bio %><br>
     <%= f.text_area :bio %>
   </div>
    <div class="field ">
-    <%= f.label :domain %><br>
+    <label>website</label><br>
     <%= f.text_field :domain %>
   </div>
-  <div class="field hidden">
+  <div class="field">
     <%= f.label :twitter %><br>
-    <%= f.text_field :twitter %>
+    @<%= f.text_field :twitter %>
   </div>
   <div class="field hidden">
     <%= f.label :cover %><br>
