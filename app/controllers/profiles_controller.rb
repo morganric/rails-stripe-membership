@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-        @cv = Item.where(user_id = @profile.user.id).order('end DESC')
+        @cv = Item.where(user_id = @profile.user.id).order('start DESC')
        @categories = Category.where(:user_id => @profile.user.id)
        @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC')
        @tags = []
@@ -42,7 +42,7 @@ class ProfilesController < ApplicationController
   end
 
   def tag
-      @cv = Item.where(user_id = @profile.user.id).order('end DESC')
+      @cv = Item.where(user_id = @profile.user.id).order('start DESC')
       @tag = params[:tag]
        @categories = Category.where(:user_id => @profile.user.id)
       @projects = Project.where(:user_id => @profile.user.id)
@@ -74,7 +74,7 @@ class ProfilesController < ApplicationController
   end
 
   def category
-    @cv = Item.where(user_id = @profile.user.id).order('end DESC')
+    @cv = Item.where(user_id = @profile.user.id).order('start DESC')
     @tags = []
     @category = Category.friendly.find(params[:category_id])
     @projects = Project.where(:user_id => @profile.user.id, :category_id => @category.id)
