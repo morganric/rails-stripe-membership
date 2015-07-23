@@ -35,10 +35,17 @@
     
 
     <div class="tab-pane active" id="all">
-     
-    <div class="col-md-10 col-md-offset-1" >
+    
+        <div class="col-md-2 clearfix" >
+        <ul>
+        <% @tags.each do |tag| %>
+          <li><%= link_to "##{tag}", vanity_tag_path(:tag =>tag, :user_id => @profile.slug) %></li>
+        <% end %>
+        </ul>
+        </div>
+    <div class="col-md-10 " >
 
-     <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
+     <div id="masonry-container" class="transitions-enabled infinite-scroll  clearfix">
 
   
      <% @projects.each do |project| %>

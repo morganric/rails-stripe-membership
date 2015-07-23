@@ -12,6 +12,15 @@
 *= require 'masonry/transitions'
 */
 
+ul li {
+  list-style: none;
+  margin-left: 0px;
+}
+
+ul {
+  padding: 0;
+}
+
 .col3 h3 a {
   color: white !important;
 }

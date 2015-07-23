@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723150425) do
+ActiveRecord::Schema.define(version: 20150723160509) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -163,6 +163,8 @@ ActiveRecord::Schema.define(version: 20150723150425) do
     t.datetime "updated_at",  null: false
     t.string   "domain"
     t.string   "slug"
+    t.string   "tumblr"
+    t.string   "instagram"
   end
 
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true

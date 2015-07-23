@@ -7,7 +7,9 @@
         <h2><%= item.title %></h2>
         <p><%= item.start %> to <%= item.end %> </p>
         <p><%= item.about %></p>
+        <% if item.user == current_user %>
         <%= link_to 'Edit', edit_item_path(item) %>
+        <% end %>
         <% end %>
       <% else %>
         Nothing doing yet...
