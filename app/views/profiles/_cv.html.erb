@@ -1,11 +1,13 @@
 <div class="tab-pane " id="cv">
     <div class="col-md-12 row" >
      <br/>
+     <% if @cv != nil %>
      <% @cv.each do |item| %>
       <h2><%= item.title %></h2>
       <p><%= item.start %> to <%= item.end %> </p>
       <p><%= item.about %></p>
       <%= link_to 'Edit', edit_item_path(item) %>
+      <% end %>
       <% end %>
     </div>
     </div>
