@@ -3,8 +3,8 @@
    <h1><%= @project.title.titleize %></h1>
 
 <h2 style="">by
-  <%= link_to @project.user.profile.first_name, vanity_profile_path(@project.user.profile.username) %>
-  <%= link_to @project.user.profile.second_name, vanity_profile_path(@project.user.profile.username) %>
+
+  <%= link_to "#{@project.user.profile.first_name} #{@project.user.profile.second_name}", vanity_profile_path(@project.user.profile.username) %>
 </h2>
 
 </div>

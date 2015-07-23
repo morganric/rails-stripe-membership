@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :items
  get '/popular', to: 'projects#popular', :as => :popular
   get '/random', to: 'projects#random', :as => :random
 

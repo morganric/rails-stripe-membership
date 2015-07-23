@@ -9,14 +9,14 @@
 <% else %>
   <div id="welcome" class="span7 ">
   <br/>
-    <h1 class="pull-center">Choose a Plan<br/>
+    <h1 class="pull-center">Join Us<br/>
     <small class="pull-center">Create a Portfolio</small>
     </h1>
     <hr/>
     <br/>
   </div>
   <div class=" col-sm-12 plans">
-    <div class="col-sm-3  well">
+    <div class="col-sm-3 pull-center  well">
       <div class="plan"><h2>Free</h2></div>
       <ol class="list-unstyled list-group">
         <li class="list-group-item">&#10004; Unlimited file hosting</li>
@@ -24,11 +24,11 @@
         <li class="list-group-item">&#10004; Profile & Project pages</li>
       </ol>
       <hr/>
-      <h3>$0/month</h3>
-      <%= link_to 'Subscribe', new_user_registration_path(plan: 'free'), :class => 'white btn btn-primary' %>
+      <!-- <h3>$0/month</h3> -->
+      <%= link_to 'Join', new_user_registration_path(plan: 'free'), :class => 'white btn btn-primary' %>
     </div>
 
-    <div class="col-sm-3   well">
+    <div class="col-sm-3 hidden  well">
       <div class="plan"><h2>Silver</h2></div>
       <ol class="list-unstyled list-group">
         <li class="list-group-item">&#10004; Unlimited file hosting</li>
@@ -39,7 +39,7 @@
       <h3>$9/month</h3>
       <%= link_to 'Subscribe', new_user_registration_path(plan: 'silver'), :class => 'white btn btn-primary' %>
     </div>
-    <div class="col-sm-3  well featured">
+    <div class="col-sm-3  well hidden featured">
       <div class="plan featured-plan"><h2>Gold</h2></div>
       <ol class="list-unstyled list-group">
         <li class="list-group-item">&#10004; Silver Plan plus...</li>
@@ -50,7 +50,7 @@
       <h3>$19/month</h3>
       <%= link_to 'Subscribe', new_user_registration_path(plan: 'gold'), :class => 'white btn btn-primary' %>
     </div>
-    <div class="col-sm-3  well">
+    <div class="col-sm-3  well hidden">
       <div class="plan"><h2>Platinum</h2></div>
       <ul class="list-unstyled list-group">
          <li class="list-group-item">&#10004; Gold Plan plus...</li>
