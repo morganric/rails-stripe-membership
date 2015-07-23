@@ -1,4 +1,12 @@
 
+    <p class="pull-right ">
+      <%= link_to raw("<i class='fa fa-twitter' ></i>"), "http://twitter.com/#{@profile.twitter}", :target => "_blank" %>
+      <%= link_to raw("<i class='fa fa-instagram' ></i>"), "https://instagram.com/#{@profile.instagram}", :target => "_blank" %>
+      <%= link_to raw("<i class='fa fa-tumblr' ></i>"), "http://#{@profile.tumblr}.tumblr.com", :target => "_blank" %>
+    </p>
+
+
+
 <br/>
 <h1  class="pull-center">
   <%= link_to "#{@profile.first_name} #{@profile.second_name}", site_profile_path(@profile.username) %> 
@@ -17,7 +25,6 @@
   </div>
 </div>
 <hr/>
-
 
 
 
