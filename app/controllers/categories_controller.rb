@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
           @category.user_id = current_user.id
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        format.html { redirect_to @category.user.profile, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
