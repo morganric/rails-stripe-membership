@@ -11,7 +11,7 @@ validates_presence_of :title
 belongs_to :category
 
  extend FriendlyId
-  friendly_id :title, use: :slugged
+ friendly_id :title, use: :slugged
 
 
 end
