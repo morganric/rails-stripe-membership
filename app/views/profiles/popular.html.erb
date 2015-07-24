@@ -1,22 +1,21 @@
-
 <%= render 'nav', :categories => @categories %>
-
   <div class="pull-center">
-<div class="menu"><a href="<%= vanity_profile_path(:user_id => @profile.slug) %>"  >Latest</a></div>
-<div class="menu"><a href="<%= vanity_popular_path(:user_id => @profile.slug) %>"  >Popular</a></div>
-<div class="menu"><a href="<%= vanity_random_path(:user_id => @profile.slug) %>"  >Random</a></div>
+<div class="menu"><a href="<%= vanity_profile_path(:id => @profile.slug) %>"  >Latest</a></div>
+<div class="menu"><a href="<%= vanity_popular_path(:id => @profile.slug) %>"  >Popular</a></div>
+<div class="menu"><a href="<%= vanity_random_path(:id => @profile.slug) %>"  >Random</a></div>
 </div>
 
 
 
 <div class="row" >
 
+     
     <div class="col-md-10 col-md-offset-1" >
 
      <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
 
   
-     <% @projects.each do |project| %>
+     <% @popular.each do |project| %>
       <div class=" pull-left col3 box" %>
       <% if project.video == nil || project.video == '' %> 
      <%= link_to image_tag(project.image.url(:standard), width: 250), vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %>
@@ -31,6 +30,13 @@
 </div>
     </div>
 
+  </div>
+</div>
+
+</div>
+</div>
 
 
-   
+
+
+

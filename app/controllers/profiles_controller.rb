@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :page, :edit, :update, :destroy, :tag, :category, :about, :cv]
+  before_action :set_profile, only: [:show, :page, :edit, :update, :destroy, :tag, :category, :about, :cv, :popular, :random]
     before_action :allow_iframe
-    before_action :admin_only, :except => [:show, :page, :tag, :category, :update, :edit, :about, :cv]
+    before_action :admin_only, :except => [:show, :page, :tag, :category, :update, :edit, :about, :cv, :random, :popular]
 
   # GET /profiles
   # GET /profiles.json
@@ -12,6 +12,41 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+        
+       @categories = Category.where(:user_id => @profile.user.id)
+       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC')
+       @tags = []
+       @popular = Project.where(:user_id => @profile.user.id).order('views DESC')
+       @random = @projects.shuffle
+
+       @projects.each do |p|
+        p.tag_list.each do |tag|
+          @tags << tag
+        end
+      end
+      @tags = @tags.uniq
+
+  end
+
+  def popular
+        
+       @categories = Category.where(:user_id => @profile.user.id)
+       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC')
+       @tags = []
+       @popular = Project.where(:user_id => @profile.user.id).order('views DESC')
+       @random = @projects.shuffle
+
+       @projects.each do |p|
+        p.tag_list.each do |tag|
+          @tags << tag
+        end
+      end
+      @tags = @tags.uniq
+
+      
+  end
+
+  def random
         
        @categories = Category.where(:user_id => @profile.user.id)
        @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC')
