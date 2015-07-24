@@ -1,0 +1,22 @@
+<%= render 'nav', :categories => @categories %>
+<div class="col-md-offset-2 col-md-8"> 
+<div class="tab-pane " id="cv">
+    <div class="col-md-12 row" >
+     <br/>
+     <% unless @cv.count == 0 %>
+
+       <% @cv.each do |item| %>
+        <h2><%= item.title %></h2>
+        <p><%= item.start.strftime("%B %d, %Y") %> to <%= item.end.strftime("%B %d, %Y") %> </p>
+        <p><%= item.about %></p>
+        <% if item.user == current_user %>
+        <%= link_to 'Edit', edit_item_path(item) %>
+        <% end %>
+        <% end %>
+      <% else %>
+        Nothing doing yet...
+      <% end %>
+    </div>
+    </div>
+</div>
+   

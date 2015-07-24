@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+
+ 
+  constraints(Subdomain) do  
+     get '/cv', to: 'sites#cv', :as => :site_cv
+    get '' => 'sites#profile', via: [:get, :post]  , as: :site_profile
+    get '/project/:id', to: 'sites#project', via: [:get, :post], as: :site_project
+    get '/tagged/:tag', to: 'sites#tag', via: [:get, :post], :as => :site_tag
+    get '/category/:category_id', to: 'sites#category', via: [:get, :post], :as => :site_category
+     
+  end
+  
+
   resources :items
  get '/popular', to: 'projects#popular', :as => :popular
   get '/random', to: 'projects#random', :as => :random
@@ -26,18 +38,11 @@ Rails.application.routes.draw do
  
   resources :users
 
-  scope ":id" do
+
+   scope ":id" do
     get '/', to: 'profiles#show', :as =>  :vanity_profile
 
   end 
- 
-  constraints(Subdomain) do  
-     get '' => 'sites#profile', via: [:get, :post]  , as: :site_profile
-    get '/project/:id', to: 'sites#project', via: [:get, :post], as: :site_project
-    get '/tagged/:tag', to: 'sites#tag', via: [:get, :post], :as => :site_tag
-    get '/category/:category_id', to: 'sites#category', via: [:get, :post], :as => :site_category
-
-  end
 
 
   get ':user_id/project/:id', to: 'projects#show', as: :vanity_project

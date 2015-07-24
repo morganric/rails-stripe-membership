@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
           @category.user_id = current_user.id
       if @category.save
         format.html { redirect_to @category.user.profile, notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: @category }
+        format.json { render :show, status: :created, location: @category.user.profile }
       else
         format.html { render :new }
         format.json { render json: @category.errors, status: :unprocessable_entity }
