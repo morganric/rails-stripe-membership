@@ -3,12 +3,7 @@
 <h1 class="pull-center"><%= image_tag('ffollio-black.png', width: 40) %> FFOLLIO<br/>
 <small>Create a Portfolio</small>
 </h1>
-<br/>
-</div>
-
-
-
-
+<hr/>
 <div style="pull-center">
   <!-- Nav tabs -->
   <div class="nav nav-top" >
@@ -17,7 +12,13 @@
     <span role="presentation" class="menu "><a href="<%= random_path %>" >Random</a></span>
    
   </div>
-<hr/>
+</div>
+
+
+
+
+
+
 </div>
    <!-- Tab panes -->
       
@@ -28,11 +29,11 @@
      <% @popular.each do |project| %>
        <div class="col3 box" %>
       <% if project.video == nil || project.video == '' %> 
-     <%= link_to image_tag(project.image.url(:standard), width: '300'), vanity_project_path(user_id: project.user.profile.slug, id: project.id) %>
+     <%= link_to image_tag(project.image.url(:standard), width: '300'), vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %>
      <% else %>
-     <%= link_to cl_image_tag("#{project.title}.jpg",:crop => :fill, :resource_type=>"video", :overlay => "play_square.png", :crop => :fill , :html_width => '300', :html_height => '200'), vanity_project_path(user_id: project.user.profile.slug, id: project.id) %>
+     <%= link_to cl_image_tag("#{project.title}.jpg",:crop => :fill, :resource_type=>"video", :overlay => "play_square.png", :crop => :fill , :html_width => '300', :html_height => '200'), vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %>
      <% end %>
-      <h3 class="hidden"><%= link_to project.title, vanity_project_path(user_id: project.user.profile.slug, id: project.id) %></h3>
+      <h3 class="hidden"><%= link_to project.title, vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %></h3>
       </div>
      <% end %>
 
