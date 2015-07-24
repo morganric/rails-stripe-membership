@@ -6,7 +6,7 @@
 
   <%= link_to "#{@project.user.profile.first_name} #{@project.user.profile.second_name}", vanity_profile_path(@project.user.profile.username) %> 
   <small>
-  in <%= link_to @project.category.name.titleize, vanity_category_path(@project.user.profile.username, :category_id => @project.category.id) %> 
+  in <%= link_to @project.category.name.titleize, vanity_category_path(@project.user.profile.username, :category_id => @project.category.slug) %> 
   </small>
 </h2>
 

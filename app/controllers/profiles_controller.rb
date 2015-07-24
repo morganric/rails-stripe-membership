@@ -86,16 +86,19 @@ class ProfilesController < ApplicationController
   end
 
   def category
-    @cv = Item.where(:user_id => @profile.user.id).order('start DESC')
+    
     @tags = []
     @category = Category.friendly.find(params[:category_id])
     @projects = Project.where(:user_id => @profile.user.id, :category_id => @category.id)
     @categories = Category.where(:user_id => @profile.user.id)
+
        @projects.each do |p|
         p.tag_list.each do |tag|
           @tags << tag
         end
       end
+      @tags = @tags.uniq
+
 
       render layout: 'blank'
   end
