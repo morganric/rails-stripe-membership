@@ -12,8 +12,8 @@
       <div class="menu "><%= link_to cat.name, vanity_category_path( :category_id => cat.slug, :user_id => @profile.username) %></div>
       <% end %>
 
-     <div class="menu"><a href="#bio" data-toggle="tab" >About</a></div>
-     <div class="menu"><a href="#cv" data-toggle="tab" >CV</a></div>
+     <div class="menu"><a href="<%= vanity_about_path(:user_id => @profile.slug) %>">About</a></div>
+     <div class="menu"><a href="<%= vanity_cv_path(:user_id => @profile.slug) %>" >CV</a></div>
     
   </div>
 </div>

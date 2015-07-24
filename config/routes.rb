@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   get ':user_id/project/:id', to: 'projects#show', as: :vanity_project
   get ':user_id/tagged/:tag', to: 'profiles#tag', :as => :vanity_tag
   get ':user_id/category/:category_id', to: 'profiles#category', :as => :vanity_category
+   get ':user_id/about', to: 'profiles#about', :as => :vanity_about
+  get ':user_id/cv', to: 'profiles#cv', :as => :vanity_cv
 
 
 

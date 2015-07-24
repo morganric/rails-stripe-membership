@@ -1,5 +1,11 @@
 
 <%= render 'nav', :categories => @categories %>
+  <div class="pull-center">
+<div class="menu"><a href="#all" data-toggle="tab" >Latest</a></div>
+<div class="menu"><a href="#popular" data-toggle="tab" >Popular</a></div>
+<div class="menu"><a href="#random" data-toggle="tab" >Random</a></div>
+</div>
+
 
 <div class="row" >
 <div class="tabbable"> <!-- Only required for left/right tabs -->
@@ -7,40 +13,13 @@
   <div class="tab-content ">
     
     <div class="tab-pane " id="bio">
-    <div class="col-md-12 row" >
-     <br/>
-     <div class="col-md-2 col-md-offset-2">
-     <%= image_tag(@profile.image.url(:standard)) %>
-     <br/><br/>
-     <p>
-     <%= link_to @profile.domain, "http://#{@profile.domain}", target: '_blank' %>
-     </p>
-
-    <p>
-      <%= link_to raw("<i class='fa fa-twitter' ></i>"), "http://twitter.com/#{@profile.twitter}", :target => "_blank" %>
-      <%= link_to raw("<i class='fa fa-instagram' ></i>"), "https://instagram.com/#{@profile.instagram}", :target => "_blank" %>
-      <%= link_to raw("<i class='fa fa-tumblr' ></i>"), "http://#{@profile.tumblr}.tumblr.com", :target => "_blank" %>
-    </p>
-
-     </div> 
-      <div class=" col-md-4 col-md-offset-1 ">
-		  <%=simple_format h @profile.bio %>
-		 <br/>
-    		<span class="pull-right" >
-          <% if current_user and current_user.admin? %>
-    			<%= link_to 'Edit', edit_profile_path(@profile)  %> 
-          <% end %>
-    		</span>
-		</div>
-    </div>
+    
     </div>
 
-    <%= render 'cv' %>
-
-   
     
 
     <div class="tab-pane active" id="all">
+
      
     <div class="col-md-10 col-md-offset-1" >
 
@@ -64,15 +43,59 @@
 
 
 
+    <div class="tab-pane " id="popular">
+     
+    <div class="col-md-10 col-md-offset-1" >
+
+     <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
+
+  
+     <% @popular.each do |project| %>
+      <div class=" pull-left col3 box" %>
+      <% if project.video == nil || project.video == '' %> 
+     <%= link_to image_tag(project.image.url(:standard), width: 250), vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %>
+     <% else %>
+     <%= link_to cl_image_tag("#{project.title}.jpg", :resource_type=>"video"), vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %>
+     <% end %>
+      <h3 class="hidden"><%= link_to project.title, vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %></h3>
+      </div>
+     <% end %>
+
+</div>
+</div>
+    </div>
+
+
+    <div class="tab-pane" id="random">
+     
+    <div class="col-md-10 col-md-offset-1" >
+
+     <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
+
+  
+     <% @random.each do |project| %>
+      <div class=" pull-left col3 box" %>
+      <% if project.video == nil || project.video == '' %> 
+     <%= link_to image_tag(project.image.url(:standard), width: 250), vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %>
+     <% else %>
+     <%= link_to cl_image_tag("#{project.title}.jpg", :resource_type=>"video"), vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %>
+     <% end %>
+      <h3 class="hidden"><%= link_to project.title, vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %></h3>
+      </div>
+     <% end %>
+
+</div>
+</div>
+    </div>
+
+
+
   </div>
 </div>
 
-
-
-
-
 </div>
 </div>
+
 
 
 

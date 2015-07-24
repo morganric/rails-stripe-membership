@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :page, :edit, :update, :destroy, :tag, :category]
+  before_action :set_profile, only: [:show, :page, :edit, :update, :destroy, :tag, :category, :about, :cv]
     before_action :allow_iframe
-    before_action :admin_only, :except => [:show, :page, :tag, :category, :update, :edit]
+    before_action :admin_only, :except => [:show, :page, :tag, :category, :update, :edit, :about, :cv]
 
   # GET /profiles
   # GET /profiles.json
@@ -12,10 +12,12 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-        @cv = Item.where(:user_id => @profile.user.id).order('start DESC')
+        
        @categories = Category.where(:user_id => @profile.user.id)
        @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC')
        @tags = []
+       @popular = Project.where(:user_id => @profile.user.id).order('views DESC')
+       @random = @projects.shuffle
 
        @projects.each do |p|
         p.tag_list.each do |tag|
@@ -24,6 +26,16 @@ class ProfilesController < ApplicationController
       end
       @tags = @tags.uniq
 
+  end
+
+  def about
+
+      @categories = Category.where(:user_id => @profile.user.id)
+  end
+
+  def cv
+      @cv = Item.where(:user_id => @profile.user.id).order('start DESC')
+      @categories = Category.where(:user_id => @profile.user.id)
   end
 
   def page
