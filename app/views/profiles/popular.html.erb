@@ -1,8 +1,8 @@
 <%= render 'nav', :categories => @categories %>
   <div class="pull-center">
 <div class="menu"><a href="<%= vanity_profile_path(:id => @profile.slug) %>"  >Latest</a></div>
-<div class="menu"><a href="<%= vanity_popular_path(:id => @profile.slug) %>"  >Popular</a></div>
-<div class="menu"><a href="<%= vanity_random_path(:id => @profile.slug) %>"  >Random</a></div>
+<div class="menu"><a href="<%= vanity_popular_path(:user_id => @profile.slug) %>"  >Popular</a></div>
+<div class="menu"><a href="<%= vanity_random_path(:user_id => @profile.slug) %>"  >Random</a></div>
 </div>
 
 
