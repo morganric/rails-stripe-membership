@@ -1,3 +1,28 @@
+<% content_for :page_javascript do %>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+  <script src="http://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
+
+  
+ <script type="text/javascript">
+ $(document).ready(function(){
+    $('#embed a').embedly(
+      {key: '8d4c76144f8711e1b4764040d3dc5c07',
+      query: {
+      maxwidth: 600,
+      maxheight: 400,
+      chars: 200,
+      autoplay: false
+    }});
+ });
+
+ 
+
+
+ </script>
+<% end %>
+
+
+
 
 <div class=" col-md-12 clearfix">
    <h1><%= @project.title.titleize %></h1>
@@ -19,17 +44,29 @@
 
 <hr/>
 <div class="col-md-8">
+
+<% unless  @project.embed.blank? %>
+
+<div id="embed">
+<%= link_to @project.embed, @project.embed, :style=>"color:white !important;"%>
+</div>
+
+<% end %>
+
 <% unless @project.video.blank? %>
 
+
 <div align="center" class="embed-responsive embed-responsive-16by9" >
-      <%= cl_video_tag(@project.video, :video_codec=>"auto", :controls => true, style: 'background-color:black;', :width => 750,
+      <%#= cl_video_tag(@project.video, :video_codec=>"auto", :controls => true, style: 'background-color:black;', :width => 750,
             :height => 500, :poster => @project.image.url()) %>
      <!--    <div id="video_overlays">
           <img src="http://res.cloudinary.com/vidgeo/image/upload/c_scale,e_gamma:-50,o_24,w_50/v1433273158/eye_tk7kls.png"/>
       </div> -->
 </div>
 
-<% else %>
+<% end %>
+
+<% if @project.video.blank? and @project.embed.blank? %>
 
  <%= image_tag @project.image.url(:large) %>
 
@@ -64,8 +101,6 @@
 
   
  </div>
-
-
 
 
 

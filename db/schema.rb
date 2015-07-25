@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723160509) do
+ActiveRecord::Schema.define(version: 20150724221225) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 20150723160509) do
     t.string   "tag_list"
     t.integer  "category_id"
     t.integer  "views"
+    t.string   "embed"
   end
 
   create_table "taggings", force: :cascade do |t|

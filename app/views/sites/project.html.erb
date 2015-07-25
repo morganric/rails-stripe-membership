@@ -5,7 +5,7 @@
  <h1><%= @project.title %>
 <br/>
 <% if @project.category != nil %>
-<small>
+<small>in 
   <%= link_to @project.category.name, site_category_path(@project.category.id) %>
 </small>
 </h1>
