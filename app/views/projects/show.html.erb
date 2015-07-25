@@ -2,7 +2,7 @@
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
   <script src="http://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
 
-  
+
  <script type="text/javascript">
  $(document).ready(function(){
     $('#embed a').embedly(
@@ -14,9 +14,6 @@
       autoplay: false
     }});
  });
-
- 
-
 
  </script>
 <% end %>
@@ -68,7 +65,11 @@
 
 <% if @project.video.blank? and @project.embed.blank? %>
 
- <%= image_tag @project.image.url(:large) %>
+  <% if @project.images.blank? %>
+    <%= image_tag @project.image.url(:large) %>
+  <% else %>
+    <%= render  'slider' %> 
+  <% end %>
 
 <% end %>
  </div>
@@ -101,7 +102,6 @@
 
   
  </div>
-
 
 
 

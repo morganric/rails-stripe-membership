@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
  
   constraints(Subdomain) do  
      get '/cv', to: 'sites#cv', :as => :site_cv
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
     get '/category/:category_id', to: 'sites#category', via: [:get, :post], :as => :site_category
      
   end
+
+    mount Attachinary::Engine => "/attachinary"
   
 
   resources :items
@@ -26,6 +29,8 @@ Rails.application.routes.draw do
   get "content/platinum"
   mount Payola::Engine => '/payola', as: :payola
   mount Upmin::Engine => '/admin'
+
+
 
   get 'products/:id', to: 'products#show', :as => :products
   

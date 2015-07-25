@@ -13,7 +13,7 @@ gem 'twitter-bootswatch-rails', '~> 3.3.4'
 gem 'twitter-bootswatch-rails-helpers'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'carrierwave'
-gem 'cloudinary'
+gem 'cloudinary', '~> 1.0.24'
 gem 'masonry-rails'
 gem 'pundit'
 gem 'friendly_id', '~> 5.1.0' 
@@ -22,6 +22,7 @@ gem 'omniauth-stripe-connect'
 gem 'omniauth-facebook' 
 gem 'kaminari'
 gem 'payola-payments', :git => "git://github.com/archonic/payola.git", :branch => "subscriptions-free"
+gem 'attachinary' 
 
 group :development, :test do
   gem 'byebug'
