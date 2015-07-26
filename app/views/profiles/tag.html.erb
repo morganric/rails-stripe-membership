@@ -45,13 +45,11 @@
       <div class="col-sm-2">
       <br/>
         <ul class="nav nav-stacked">
-      
-    <ul class="nav nav-stacked">
-      <!-- links -->
-      <% @tags.take(5).each do |tag| %>
-      <li role="presentation" ><%= link_to "##{tag}", vanity_tag_path(:tag => tag) %></li>
-      <% end %>
-  </ul>
+    <ul>
+        <% @tags.each do |tag| %>
+          <li><%= link_to "##{tag}", vanity_tag_path(:tag =>tag, :user_id => @profile.slug) %></li>
+        <% end %>
+        </ul>
 
 
 
