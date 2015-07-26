@@ -27,7 +27,7 @@
 <h2 style="">
   by
   <%= link_to "#{@project.user.profile.first_name} #{@project.user.profile.second_name}", vanity_profile_path(@project.user.profile.username) %>
-  <% unless @project.category_id.blank? %> 
+  <% if @project.category_id != nil %> 
       <small>
       in <%= link_to @project.category.name.titleize, vanity_category_path(@project.user.profile.username, :category_id => @project.category.slug) %> 
       </small>
