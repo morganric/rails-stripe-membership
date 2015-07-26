@@ -24,13 +24,13 @@
 <div class=" col-md-12 clearfix">
    <h1><%= @project.title.titleize %></h1>
 
-<h2 style="">by
-
+<h2 style="">
+  by
   <%= link_to "#{@project.user.profile.first_name} #{@project.user.profile.second_name}", vanity_profile_path(@project.user.profile.username) %>
-  <% unless @project.category_id.nil? %> 
-  <small>
-  in <%= link_to @project.category.name.titleize, vanity_category_path(@project.user.profile.username, :category_id => @project.category.slug) %> 
-  </small>
+  <% unless @project.category_id.blank? %> 
+      <small>
+      in <%= link_to @project.category.name.titleize, vanity_category_path(@project.user.profile.username, :category_id => @project.category.slug) %> 
+      </small>
   <% end %>
 </h2>
 
