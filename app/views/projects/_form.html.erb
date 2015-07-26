@@ -1,3 +1,4 @@
+<div class="well">
 <%= form_for(@project, :class => "form-horizontal") do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -11,42 +12,29 @@
     </div>
   <% end %>
   <fieldset>
-<div class="form-group">
+<div class="form-group col-lg-6">
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :type=>"text", :class=>"form-control" %>
   </div>
+  <br/>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :class=>"form-control", :rows=>"3" %>
   </div>
   <div class="field hidden">
     <%= f.label :cover %><br>
 
   </div>
-  
+  <br/>
   <div class="field">
     <%= f.label :image %><br>
     <%= f.file_field :image %>
   </div>
   <br/>
-  <div class="field ">
-    <%= f.label :images %><br>
-    <%= attachinary_file_field_tag 'project[images]', @project, :images %>
-  </div>
-  <br/>
-  <div class="field hidden">
-    <%= f.label :video %><br>
-    <%= f.file_field :video %>
-  </div>
-   <div class="field">
-    <%= f.label :embed %><br>
-    <%= f.text_field :embed %>
-  </div>
-  <br/>
   <div class="field">
     <%= f.label :tags %><br>
-    <%= f.text_field :tag_list %>
+    <%= f.text_field :tag_list, :type=>"text", :class=>"form-control" %>
   </div>
   <br/>
   <div class="field">
@@ -54,13 +42,33 @@
     <%= f.collection_select :category_id, Category.where(:user_id => current_user.id), :id, :name, include_blank: true %>
   </div>
   <br/>
-   <p><%= link_to 'New Category', new_category_path %></p>
+   <p>(<%= link_to 'New Category', new_category_path %>)</p>
+  <br/>
+  <div class="field">
+    <%= f.label "Embed link" %><br>
+    <%= f.text_field :embed , :type=>"text", :class=>"form-control"%>
+  </div>
+  <br/>
+  <div class="field hidden">
+    <%= f.label :video %><br>
+    <%= f.file_field :video %>
+  </div>
   <hr/>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn"  %>
   </div>
+  </div>
+
+  <div class="form-group col-lg-6">
+    <div class="field ">
+    <%= f.label "Slider images" %><br>
+    <%= attachinary_file_field_tag 'project[images]', @project, :images %>
+  </div>
+   
+  </div>
+  
+  
 <% end %>
 </fieldset>
-</div>
 
 

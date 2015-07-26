@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725161327) do
+ActiveRecord::Schema.define(version: 20150726142006) do
 
   create_table "attachinary_files", force: :cascade do |t|
     t.integer  "attachinariable_id"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150725161327) do
     t.datetime "updated_at", null: false
     t.date     "start"
     t.date     "end"
+    t.string   "location"
   end
 
   create_table "payola_affiliates", force: :cascade do |t|

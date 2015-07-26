@@ -1,3 +1,4 @@
+<div class="well">
 <%= form_for(@category) do |f| %>
   <% if @category.errors.any? %>
     <div id="error_explanation">
@@ -13,10 +14,11 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :type=>"text", :class=>"form-control" %>
   </div>
   <hr/>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn" %>
   </div>
 <% end %>
+</div>
