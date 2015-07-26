@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-
  
   constraints(Subdomain) do  
      get '/cv', to: 'sites#cv', :as => :site_cv
@@ -16,9 +15,9 @@ Rails.application.routes.draw do
   
 
   resources :items
- get '/popular', to: 'projects#popular', :as => :popular
-  get '/random', to: 'projects#random', :as => :random
 
+    get '/popular', to: 'projects#popular', :as => :popular
+  get '/random', to: 'projects#random', :as => :random
 
 
   resources :categories
@@ -45,10 +44,12 @@ Rails.application.routes.draw do
 
 
    scope ":id" do
+    
     get '/', to: 'profiles#show', :as =>  :vanity_profile
 
   end 
 
+ 
 
   get ':user_id/project/:id', to: 'projects#show', as: :vanity_project
   get ':user_id/tagged/:tag', to: 'profiles#tag', :as => :vanity_tag
@@ -61,13 +62,15 @@ Rails.application.routes.draw do
 
 
 
+
   authenticated :user do
     root to: "projects#index", as: :authenticated_root
   end
 
   unauthenticated do
-    root to: "visitors#index"
+    root to: "projects#index"
   end
+
 
 
 

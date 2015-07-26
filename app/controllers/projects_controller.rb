@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
    before_action :allow_iframe
-   before_filter :authenticate_user!,  except: [:index, :show, :tag, :embed, :modal]
+   before_filter :authenticate_user!,  except: [:index, :show, :tag, :embed, :modal, :random, :popular]
    
   # GET /projects
   # GET /projects.json
@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
 
 
   def popular
+    @projects = Project.all.order('created_at DESC')
     @popular = Project.all.order('views DESC')
   end
 
@@ -27,7 +28,7 @@ class ProjectsController < ApplicationController
       @project.views = @project.views.to_i + 1
       @project.save
 
-       render layout: 'blank'
+    
 
   end
 

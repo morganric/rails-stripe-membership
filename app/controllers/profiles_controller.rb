@@ -116,8 +116,6 @@ class ProfilesController < ApplicationController
 
       @other_tags = @other_tags.uniq
 
-
-       render layout: 'blank'
   end
 
   def category
@@ -135,7 +133,7 @@ class ProfilesController < ApplicationController
       @tags = @tags.uniq
 
 
-      render layout: 'blank'
+
   end
 
   # GET /profiles/new
