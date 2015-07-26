@@ -98,7 +98,9 @@ class ProfilesController < ApplicationController
 
        @projects.each do |p|
         p.tag_list.each do |tag|
+          unless tag == params[:tag]
           @tags << tag
+          end
         end
       end
 
