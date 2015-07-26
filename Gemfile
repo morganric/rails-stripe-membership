@@ -23,6 +23,7 @@ gem 'omniauth-facebook'
 gem 'kaminari'
 gem 'payola-payments', :git => "git://github.com/archonic/payola.git", :branch => "subscriptions-free"
 gem 'attachinary' 
+gem  'rails_autolink'
 
 group :development, :test do
   gem 'byebug'

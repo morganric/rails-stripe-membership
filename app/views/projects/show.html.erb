@@ -85,7 +85,7 @@
 
 <p class="">
 
-  <%=simple_format h @project.description %>
+  <%=simple_format h auto_link(@project.description) %>
 </p>
 
 <%= link_to 'Back', url_for(:back) %>
