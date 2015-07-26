@@ -94,6 +94,7 @@ class ProfilesController < ApplicationController
        @categories = Category.where(:user_id => @profile.user.id)
       @projects = Project.where(:user_id => @profile.user.id)
       @tags = []
+      @projects = @projects.tagged_with(@tag)
 
        @projects.each do |p|
         p.tag_list.each do |tag|
@@ -103,7 +104,7 @@ class ProfilesController < ApplicationController
 
       @tags = @tags.uniq
       
-      @projects = @projects.tagged_with(@tag)
+      
       @other_tags = []
 
        @projects.each do |p|
@@ -122,7 +123,7 @@ class ProfilesController < ApplicationController
     
     @tags = []
     @category = Category.friendly.find(params[:category_id])
-    @projects = Project.where(:user_id => @profile.user.id, :category_id => @category.id)
+    @projects = Project.where(:user_id => @profile.user.id).where(:category_id => @category.id)
     @categories = Category.where(:user_id => @profile.user.id)
 
        @projects.each do |p|
