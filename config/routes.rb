@@ -42,6 +42,7 @@ Rails.application.routes.draw do
  
   resources :users
 
+get '/beta', to: 'visitors#index', as: :beta
 
    scope ":id" do
     
@@ -57,7 +58,8 @@ Rails.application.routes.draw do
   get ':user_id/about', to: 'profiles#about', :as => :vanity_about
   get ':user_id/cv', to: 'profiles#cv', :as => :vanity_cv
   get ':user_id/popular', to: 'profiles#popular', :as => :vanity_popular
-  get ':user_id/random', to: 'profiles#random', :as => :vanity_random 
+  get ':user_id/random', to: 'profiles#random', :as => :vanity_random
+  get ':user_id/admin', to: 'projects#admin', :as => :admin 
 
 
 

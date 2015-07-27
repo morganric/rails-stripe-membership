@@ -1,0 +1,21 @@
+
+<h1>Recent Projects</h1>
+<hr/>
+<ul>
+<% @projects.each do |project| %>
+	<li>
+	<%= image_tag(project.image.url(:thumb)) %>
+		<h3 class=""><%= link_to project.title, edit_project_path(project) %></h3>
+	
+<% if user_signed_in? %>
+  <% if current_user.try(:admin?) %>
+   <%= link_to 'Edit', edit_project_path(project) %> | 
+<%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<% end %>
+	</li>
+	<hr/>
+<% end %>
+	</ul>
+
+<%= paginate @projects %>

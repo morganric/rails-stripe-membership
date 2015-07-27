@@ -10,6 +10,8 @@
               <li><%= link_to 'New Category', new_category_path %>
               </li>
               <li class="divider"></li>
+              <li><%= link_to 'Projects Admin', admin_path(current_user.profile.id) %>
+              </li>
            <li><%= link_to 'Edit account', edit_user_registration_path %></li>
            <li><%= link_to 'Edit Profile', edit_profile_path(current_user.profile.id) %></li>
             <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
@@ -20,7 +22,8 @@
  
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
-  <li><%= link_to 'Sign up', new_user_registration_path, data: { no_turbolink: true } %></li>
+  <li><%#= link_to 'Sign up', new_user_registration_path, data: { no_turbolink: true } %></li>
+  <li><%= link_to 'Join', beta_path %></li>
   <li class="hidden"><a href="<%= user_omniauth_authorize_path(:facebook) %>" ><button class="btn btn-facebook" ><i class="fa fa-facebook"></i> | Sign in with Facebook</button></a></li>
 <% end %>
 <% if user_signed_in? %>

@@ -10,6 +10,11 @@ class ProjectsController < ApplicationController
     
   end
 
+  def admin
+    @projects = Project.where(:user_id => current_user.id).order('created_at DESC').page(params[:page]).per(5)
+    
+  end
+
   def random
     @projects = Project.all.order('created_at DESC')
     @random = @projects.shuffle
