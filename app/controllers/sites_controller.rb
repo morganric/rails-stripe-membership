@@ -15,7 +15,7 @@ class SitesController < ApplicationController
   def profile
         
         @categories = Category.where(:user_id => @profile.user.id)
-       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC')
+       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(10)
        @tags = []
 
        @projects.each do |p|
@@ -63,7 +63,7 @@ class SitesController < ApplicationController
   def category
     @category = Category.friendly.find(params[:category_id])
     @tags = []
-    @projects = Project.where(:user_id => @profile.user.id, :category_id =>   @category.id)
+    @projects = Project.where(:user_id => @profile.user.id, :category_id =>   @category.id).page(params[:page]).per(10)
     @categories = Category.where(:user_id => @profile.user.id)
        @projects.each do |p|
         p.tag_list.each do |tag|
