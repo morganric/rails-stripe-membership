@@ -37,10 +37,20 @@
     <%= f.text_field :tag_list, :type=>"text", :class=>"form-control" %>
   </div>
   <br/>
+  <% if user_signed_in? %>
+  <% if current_user.try(:admin?) %>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+  </div>
+  <% else %>
   <div class="field">
     <%= f.label :category %><br>
     <%= f.collection_select :category_id, Category.where(:user_id => current_user.id), :id, :name, include_blank: true %>
   </div>
+
+  <% end %>
+  <% end %>
   <br/>
    <p>(<%= link_to 'New Category', new_category_path %>)</p>
   <br/>
