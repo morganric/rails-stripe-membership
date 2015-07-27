@@ -19,14 +19,14 @@ class ProjectsController < ApplicationController
   end
 
   def random
-    @projects = Project.all.order('created_at DESC')
-    @random = @projects.shuffle
+    @projects = Project.all.order('created_at DESC').page(params[:page]).per(10)
+    @random = @projects.page(params[:page]).per(10)
   end
 
 
   def popular
-    @projects = Project.all.order('created_at DESC')
-    @popular = Project.all.order('views DESC')
+    @projects = Project.all.order('created_at DESC').page(params[:page]).per(10)
+    @popular = Project.all.order('views DESC').page(params[:page]).per(10)
   end
 
   # GET /projects/1

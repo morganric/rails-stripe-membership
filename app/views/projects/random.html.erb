@@ -24,7 +24,7 @@
   <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
 
   
-     <% @random.each do |project| %>
+     <% @random.shuffle.each do |project| %>
        <div class="col3 box" %>
       <% if project.video == nil || project.video == '' %> 
      <%= link_to image_tag(project.image.url(:standard), width: '300'), vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %>
@@ -37,6 +37,7 @@
 
 </div>
 
+<%= paginate @random %>
 </div>
 
 
