@@ -101,3 +101,48 @@ h1 a, h2 a, h3 a, a {
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
+
+
+
+
+
+
+#masonry-container {
+  background: #FFF;
+  padding: 5px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  clear: both;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+.lab {
+  background: grey;
+  color: white;
+  padding: 2px 5px;
+  margin: 2px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.box h2 {
+  font-size: 24px !important;
+}
+.box {
+  background: white;
+ border-radius: 0px;
+ /*border: 1px solid #fff;*/
+}
+
+.box:hover {
+  box-shadow: 10px 10px 5px #eee;
+  /*border: 1px solid #ddd;*/
+}
