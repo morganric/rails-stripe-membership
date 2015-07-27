@@ -36,6 +36,18 @@
     <%= f.label :tags %><br>
     <%= f.text_field :tag_list, :type=>"text", :class=>"form-control" %>
   </div>
+  
+  <div class="field hidden">
+    <%= f.label :video %><br>
+    <%= f.file_field :video %>
+  </div>
+  <hr/>
+  <div class="actions">
+    <%= f.submit :class => "btn"  %>
+  </div>
+  </div>
+
+  <div class="form-group col-lg-6">
   <br/>
   <% if user_signed_in? %>
   <% if current_user.try(:admin?) %>
@@ -59,17 +71,6 @@
     <%= f.text_field :embed , :type=>"text", :class=>"form-control"%>
   </div>
   <br/>
-  <div class="field hidden">
-    <%= f.label :video %><br>
-    <%= f.file_field :video %>
-  </div>
-  <hr/>
-  <div class="actions">
-    <%= f.submit :class => "btn"  %>
-  </div>
-  </div>
-
-  <div class="form-group col-lg-6">
     <div class="field ">
     <%= f.label "Slider images" %><br>
     <%= attachinary_file_field_tag 'project[images]', @project, :images %>
