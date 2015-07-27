@@ -33,8 +33,8 @@ class ProfilesController < ApplicationController
        @categories = Category.where(:user_id => @profile.user.id)
        @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(10)
        @tags = []
-       @popular = Project.where(:user_id => @profile.user.id).order('views DESC')
-       @random = @projects.page(params[:page]).per(10)
+       @popular = Project.where(:user_id => @profile.user.id).order('views DESC').page(params[:page]).per(10)
+       @random = @projects
 
        @projects.each do |p|
         p.tag_list.each do |tag|
@@ -52,7 +52,7 @@ class ProfilesController < ApplicationController
        @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(10)
        @tags = []
        @popular = Project.where(:user_id => @profile.user.id).order('views DESC').page(params[:page]).per(10)
-       @random = @projects.shuffle
+       @random = @projects.page(params[:page]).per(10)
 
        @projects.each do |p|
         p.tag_list.each do |tag|
