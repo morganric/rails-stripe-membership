@@ -14,9 +14,9 @@ class ProfilesController < ApplicationController
   def show
         
        @categories = Category.where(:user_id => @profile.user.id)
-       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC')
+       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(10)
        @tags = []
-       @popular = Project.where(:user_id => @profile.user.id).order('views DESC')
+       @popular = Project.where(:user_id => @profile.user.id).order('views DESC').page(params[:page]).per(10)
        @random = @projects.shuffle
 
        @projects.each do |p|
@@ -31,10 +31,10 @@ class ProfilesController < ApplicationController
   def popular
         
        @categories = Category.where(:user_id => @profile.user.id)
-       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC')
+       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(10)
        @tags = []
        @popular = Project.where(:user_id => @profile.user.id).order('views DESC')
-       @random = @projects.shuffle
+       @random = @projects.page(params[:page]).per(10)
 
        @projects.each do |p|
         p.tag_list.each do |tag|
@@ -49,9 +49,9 @@ class ProfilesController < ApplicationController
   def random
         
        @categories = Category.where(:user_id => @profile.user.id)
-       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC')
+       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(10)
        @tags = []
-       @popular = Project.where(:user_id => @profile.user.id).order('views DESC')
+       @popular = Project.where(:user_id => @profile.user.id).order('views DESC').page(params[:page]).per(10)
        @random = @projects.shuffle
 
        @projects.each do |p|
@@ -125,7 +125,7 @@ class ProfilesController < ApplicationController
     
     @tags = []
     @category = Category.friendly.find(params[:category_id])
-    @projects = Project.where(:user_id => @profile.user.id).where(:category_id => @category.id)
+    @projects = Project.where(:user_id => @profile.user.id).where(:category_id => @category.id).page(params[:page]).per(10)
     @categories = Category.where(:user_id => @profile.user.id)
 
        @projects.each do |p|
