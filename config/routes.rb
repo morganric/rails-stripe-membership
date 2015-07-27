@@ -61,6 +61,7 @@ get '/beta', to: 'visitors#index', as: :beta
   get ':user_id/random', to: 'profiles#random', :as => :vanity_random
   get ':user_id/admin', to: 'projects#admin', :as => :admin 
 
+  get '/tagged/:tag', to: 'projects#tag', :as => :tag
 
 
 

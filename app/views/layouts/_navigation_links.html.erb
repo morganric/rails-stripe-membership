@@ -10,7 +10,7 @@
               <li><%= link_to 'New Category', new_category_path %>
               </li>
               <li class="divider"></li>
-              <li><%= link_to 'Projects Admin', admin_path(current_user.profile.id) %>
+              <li><%= link_to 'Projects Admin', admin_path(current_user.profile.slug) %>
               </li>
            <li><%= link_to 'Edit account', edit_user_registration_path %></li>
            <li><%= link_to 'Edit Profile', edit_profile_path(current_user.profile.id) %></li>

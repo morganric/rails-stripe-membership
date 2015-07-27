@@ -1,0 +1,37 @@
+
+<br/>
+<h1 class="pull-center">Tagged: <%= @tag %></h1>
+<hr/>
+<div class="row" >
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  
+  <div class="tab-content col-sm-12">
+    
+ 
+    <div class="col-md-10" >
+
+     <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+
+  
+     <% @projects.each do |project| %>
+      <div class=" pull-left col3 box" %>
+     <%= link_to image_tag(project.image.url(:standard)), vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %>
+      <h3 class="hidden"><%= link_to project.title, vanity_project_path(user_id: project.user.profile.slug, id: project.slug) %></h3>
+      </div>
+     <% end %>
+
+    </div>
+    </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+

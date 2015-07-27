@@ -80,7 +80,7 @@
 
    <label class="label label-primary"><i class="icon-eye"></i><%= @project.views %> views</label>
  <%  @project.tag_list.each do |tag| %>
-  <label class="label label-default">#<%= link_to tag, vanity_tag_path(tag: tag, user_id: @project.user.profile.slug), :class=>"white"%></label>
+  <label class="label label-default">#<%= link_to tag, tag_path(tag: tag), :class=>"white"%></label>
 <% end %>
 
 <p class="">

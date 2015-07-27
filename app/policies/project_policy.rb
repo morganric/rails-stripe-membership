@@ -18,8 +18,12 @@
     true
   end
 
+  def admin?
+    @current_user.admin? or @current_user.signed_in?
+  end
+
   def edit?
-    @current_user.admin? or @current_user == @piece.user
+    @current_user.admin? or @current_user == @project.user
   end
 
   def update?
@@ -28,7 +32,7 @@
   end
 
   def destroy?
-    return false if @current_user == @piece.user
+    return false if @current_user == @project.user
     @current_user.admin?
   end
 

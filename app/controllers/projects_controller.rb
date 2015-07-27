@@ -12,7 +12,10 @@ class ProjectsController < ApplicationController
 
   def admin
     @projects = Project.where(:user_id => current_user.id).order('created_at DESC').page(params[:page]).per(5)
-    
+    @views = 0
+    @projects.each do |p|
+      @views = @views + p.views
+    end
   end
 
   def random
@@ -33,7 +36,36 @@ class ProjectsController < ApplicationController
       @project.views = @project.views.to_i + 1
       @project.save
 
-    
+  end
+
+  def tag
+      
+      @tag = params[:tag]
+      @tags = []
+      @projects = Project.tagged_with(@tag)
+
+       @projects.each do |p|
+        p.tag_list.each do |tag|
+          unless tag == params[:tag]
+          @tags << tag
+          end
+        end
+      end
+
+      @tags = @tags.uniq
+      
+      
+      @other_tags = []
+
+       @projects.each do |p|
+        p.tag_list.each do |tag|
+          unless tag == params[:tag]
+            @other_tags << tag
+          end
+        end
+      end
+
+      @other_tags = @other_tags.uniq
 
   end
 
@@ -92,7 +124,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      format.html { redirect_to admin_url(:user_id => current_user.id), notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
