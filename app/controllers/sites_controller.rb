@@ -34,27 +34,19 @@ class SitesController < ApplicationController
        @categories = Category.where(:user_id => @profile.user.id)
       @projects = Project.where(:user_id => @profile.user.id)
       @tags = []
-
-       @projects.each do |p|
-        p.tag_list.each do |tag|
-          @tags << tag
-        end
-      end
-
-      @tags = @tags.uniq
       
       @projects = @projects.tagged_with(@tag)
-      @other_tags = []
+     
 
        @projects.each do |p|
         p.tag_list.each do |tag|
           unless tag == params[:tag]
-            @other_tags << tag
+            @tags << tag
           end
         end
       end
 
-      @other_tags = @other_tags.uniq
+      @tags = @tags.uniq
 
 
        render layout: 'blank'
@@ -65,6 +57,7 @@ class SitesController < ApplicationController
     @tags = []
     @projects = Project.where(:user_id => @profile.user.id, :category_id =>   @category.id).page(params[:page]).per(10)
     @categories = Category.where(:user_id => @profile.user.id)
+       
        @projects.each do |p|
         p.tag_list.each do |tag|
           @tags << tag
