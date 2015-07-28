@@ -1,4 +1,6 @@
 <div class="well">
+
+
 <%= form_for(@profile) do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
@@ -11,7 +13,8 @@
       </ul>
     </div>
   <% end %>
-
+<div class="row" >
+  <div class="col-md-6">
   <div class="field">
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name, :type=>"text", :class=>"form-control" %>
@@ -25,7 +28,7 @@
     <%= f.label :image %><br>
     <%= f.file_field :image %>
     <br/>
-    <%= image_tag(@profile.image.url(:standard)) %>
+    <%= image_tag(@profile.image.url(:thumb)) %>
   
   </div>
     <br/>
@@ -37,6 +40,12 @@
     <label>website</label><br>
     <%= f.text_field :domain, :type=>"text", :class=>"form-control" %>
   </div>
+    <hr/>
+  <div class="actions">
+    <%= f.submit :class => "btn" %>
+  </div>
+  </div>
+  <div class="col-md-6">
   <h3>Social Links</h3>
   <div class="field">
     <%= f.label :twitter %><br>
@@ -52,6 +61,12 @@
     <%= f.label :instagram %><br>
     www.instagram.com/<%= f.text_field :instagram %>
   </div>
+<br/>
+  <div class="field">
+    <%= f.label :font %><br>
+    <%= f.collection_select :font, ['Nunito', 'Oxygen','Cantarell', 'Philosopher', 'Droid Sans' ], :to_s, :to_s, include_blank: false %>
+  </div>
+
   <div class="field hidden">
     <%= f.label :cover %><br>
     <%= f.text_field :cover %>
@@ -60,9 +75,9 @@
     <%= f.label :user_id %><br>
     <%= f.number_field :user_id %>
   </div>
-  <hr/>
-  <div class="actions">
-    <%= f.submit :class => "btn" %>
+  </div>
+
+
   </div>
 <% end %>
 </div>
