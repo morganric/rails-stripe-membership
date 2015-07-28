@@ -84,7 +84,7 @@
 </p>
 
  <%  @project.tag_list.each do |tag| %>
-  #<%= tag %></label>
+  #<%= link_to tag, site_tag_path(tag) %></label>
 <% end %>
 <br/>
 <%= link_to 'Back', url_for(:back) %>
