@@ -10,20 +10,16 @@
   <div id="welcome" class="span7 ">
 
   <br/>
-    <h1 class="pull-center">Join Us<br/>
-    <small class="pull-center">Create a Portfolio</small>
+    <!-- <h1 class="pull-center">Join Us<br/>
+    <small class="pull-center">Create a Portfolio</small> -->
     </h1>
-    <hr/>
-    <br/>
-  
-    <br/>
+    
   </div>
-  <div class=" col-sm-12 plans">
-  <div class="well col-sm-6 ">
+  <div class=" col-sm-12 pull-center">
     
     
-<h3>Welcome to the Ffollio Beta!</h3>
-
+<h1>Welcome to Ffollio<sup><small> Beta</small></sup></h1>
+<hr/>
 <p>Ffollio a small and independent project, working to be a platform where photographers, designers, directors, illustrators, videographers, actors and visual artists can easily & efficiently organize their own portfolios online, as well as explore work from other users.</p>
 
 <p>Ffollio is designed with artists and professionals in mind who lack time or budget to make their own portfolio sites and for people who want a very fast and simple way to visually organize their work.</p>
@@ -33,9 +29,13 @@
 
 <p>Remember, this is only our Beta, there is still a lot of work to come. Please experiment and use to your heart's content. We are interested to know how we can help improve ffollio to make it better for all of us. The more feedback we get from you, the better we can mold and shape it. This project is pretty relaxed, but we do want to improve it quickly!</p>
 
-<p>Team Ffollio</p>
+<br/>
+<%= link_to 'Join the Beta', new_user_registration_path(plan: 'free'), :class => 'white btn btn-primary' %>
+
   </div>
-    <div class="col-sm-5 col-sm-offset-1  well">
+  <div class=" col-sm-12 plans">
+  
+    <div class="col-sm-5 col-sm-offset-1  well hidden">
       <div class="plan"><h2>Join the Beta</h2></div>
       <ol class="list-unstyled list-group">
         <li class="list-group-item">&#10004; Unlimited file hosting</li>
