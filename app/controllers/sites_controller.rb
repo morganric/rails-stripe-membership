@@ -64,6 +64,8 @@ class SitesController < ApplicationController
         end
       end
 
+     @tags = @tags.uniq
+
       render layout: 'blank'
   end
 
