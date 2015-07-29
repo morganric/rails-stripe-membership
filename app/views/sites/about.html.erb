@@ -1,0 +1,25 @@
+
+<%= render 'nav', :categories => @categories %>
+
+
+<div class="tab-pane " id="bio">
+    <div class="col-md-12 row" >
+     <br/>
+     <div class="col-md-2 col-md-offset-2">
+     <%= image_tag(@profile.image.url(:standard)) %>
+     <br/><br/>
+     <p>
+     <%= link_to @profile.domain, "http://#{@profile.domain}", target: '_blank' %>
+     </p>
+     </div> 
+      <div class=" col-md-4 col-md-offset-1 ">
+      <%=simple_format h @profile.bio %>
+     <br/>
+        <span class="pull-right" >
+          <% if current_user and current_user.admin? %>
+          <%= link_to 'Edit', edit_profile_path(@profile)  %> 
+          <% end %>
+        </span>
+    </div>
+    </div>
+    </div>

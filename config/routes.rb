@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     get '/project/:id', to: 'sites#project', via: [:get, :post], as: :site_project
     get '/tagged/:tag', to: 'sites#tag', via: [:get, :post], :as => :site_tag
     get '/category/:category_id', to: 'sites#category', via: [:get, :post], :as => :site_category
-     
+    get '/about', to: 'sites#about', :as => :site_about
+    # get '/cv', to: ' sites#cv', :as => :site_cv
   end
 
     mount Attachinary::Engine => "/attachinary"

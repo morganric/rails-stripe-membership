@@ -9,6 +9,8 @@
 
 
 <br/>
+
+<br/>
 <h1  class="pull-center">
   <%= link_to "#{@profile.first_name} #{@profile.second_name}", site_profile_path(@profile.username) %> 
 </h1>
@@ -18,11 +20,15 @@
  <div class="nav nav-top pull-center">
       <!-- links -->
       <% @categories.each do |cat| %>
-      <div class="menu "><%= link_to cat.name, site_category_path(:category_id => cat.slug) %></div>
+      <div class="menu "><%= link_to cat.name, site_category_path( :category_id => cat.slug) %></div>
       <% end %>
 
-     <div class="menu"><a href="#bio" data-toggle="tab" >About</a></div>
-     <div class="menu"><a href="<%= site_cv_url %>">CV</a></div>
+     <div class="menu"><a href="<%= site_about_path %>">About</a></div>
+     <div class="menu"><a href="<%= site_cv_path %>" >CV</a></div>
+    
   </div>
 </div>
 <hr/>
+
+
+

@@ -1,7 +1,7 @@
 class SitesController < ApplicationController
-  before_action :set_profile, only: [:project, :profile, :tag, :category, :cv]
+  before_action :set_profile, only: [:project, :profile, :tag, :category, :cv, :about]
     before_action :allow_iframe
-    before_action :admin_only, :except => [:project, :profile, :tag, :category, :cv]
+    before_action :admin_only, :except => [:project, :profile, :tag, :category, :cv, :about]
 
   # GET /profiles
   # GET /profiles.json
@@ -26,6 +26,11 @@ class SitesController < ApplicationController
       @tags = @tags.uniq
 
        render layout: 'blank'
+  end
+
+  def about
+     @categories = Category.where(:user_id => @profile.user.id)
+     render layout: 'blank'
   end
 
   def tag
