@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   belongs_to :plan
   validates_associated :plan
+  validates :name, format: { with: /\A[a-zA-Z0-9]+\Z/ }
 
   def set_default_role
     self.role ||= :user
