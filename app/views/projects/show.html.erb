@@ -90,7 +90,7 @@
 
 <%= link_to 'Back', url_for(:back) %>
 <% if user_signed_in? %>
-  <% if current_user.try(:admin?) %>
+  <% if current_user.try(:admin?) || current_user == @project.user %>
  | <%= link_to 'Edit', edit_project_path(@project) %> | 
 <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

@@ -207,7 +207,7 @@ class ProfilesController < ApplicationController
     #for subdomains on heroku
       # @profile = Profile.find(params[:id])
 
-    if params[:id] == nil
+      if params[:id] == nil
         if params[:user_id] != nil
           @profile = Profile.friendly.find(params[:user_id])
         else
