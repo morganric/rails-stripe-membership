@@ -8,9 +8,10 @@
      <div class="col-md-2 col-md-offset-2">
      <%= image_tag(@profile.image.url(:standard)) %>
      <br/><br/>
-     <p>
-     <%= link_to @profile.domain, "http://#{@profile.domain}", target: '_blank' %>
-     </p>
+        <p>
+       <%= link_to @profile.domain, "http://#{@profile.domain}", target: '_blank' %>
+       </p>
+
      </div> 
       <div class=" col-md-4 col-md-offset-1 ">
       <%=simple_format h @profile.bio %>

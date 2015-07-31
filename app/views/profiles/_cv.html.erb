@@ -7,7 +7,7 @@
         <h2><%= item.title %></h2>
         <h4><%= item.location %></h4>
         <p><%= item.start.strftime("%B %d, %Y") %> </p>
-        <p><%= item.about %></p>
+        <p> <%=simple_format h auto_link(item.about, :html => { :target => '_blank' })  %></p>
         <% if item.user == current_user %>
         <%= link_to 'Edit', edit_item_path(item) %>
         <hr/>

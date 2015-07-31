@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
  
   constraints(Subdomain) do  
-     get '/cv', to: 'sites#cv', :as => :site_cv
+    get '/cv', to: 'sites#cv', :as => :site_cv
     get '' => 'sites#profile', via: [:get, :post]  , as: :site_profile
     get '/project/:id', to: 'sites#project', via: [:get, :post], as: :site_project
     get '/tagged/:tag', to: 'sites#tag', via: [:get, :post], :as => :site_tag

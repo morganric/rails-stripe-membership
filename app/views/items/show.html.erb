@@ -6,7 +6,8 @@
 
 <p>
   <strong>About:</strong>
-  <%= @item.about %>
+
+  <%=simple_format h auto_link(@item.about, :html => { :target => '_blank' }) %>
 </p>
 
 <p>

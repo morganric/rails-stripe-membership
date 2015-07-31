@@ -10,9 +10,15 @@
   <% end %>
   </p>
 
-     <p>
-     <%= link_to @profile.domain, "http://#{@profile.domain}", target: '_blank' %>
-     </p>
+  <% if @profile.domain == '' %>
+       <p>
+       <%= link_to "http://#{@profile.user.name}.ffoll.io", "http://#{@profile.user.name}.ffoll.io", target: '_blank' %>
+       </p>
+     <% else %>
+        <p>
+       <%= link_to @profile.domain, "http://#{@profile.domain}", target: '_blank' %>
+       </p>
+     <% end %>
 
 
     <p>
@@ -24,7 +30,7 @@
 
      </div> 
       <div class=" col-md-4 col-md-offset-1 ">
-		  <%=simple_format h @profile.bio %>
+		  <%=simple_format h auto_link(@profile.bio, :html => { :target => '_blank' }) %>
 		 <br/>
     		<span class="pull-right" >
           <% if current_user and current_user.admin? %>
