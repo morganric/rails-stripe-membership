@@ -7,7 +7,10 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all.order('created_at DESC').page(params[:page]).per(10)
-    
+  end
+
+  def featured
+    @projects = Project.where(:featured => true).order('created_at DESC').page(params[:page]).per(10)
   end
 
   def admin
@@ -142,6 +145,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title,:tag_list, :views, :description, :cover, :images, :image, :video, :user_id, :slug, :category_id, :embed)
+      params.require(:project).permit(:title,:tag_list, :views, :description, :cover, :images, :image, :video, :user_id, :slug, :category_id, :embed, :featured)
     end
 end

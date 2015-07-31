@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731151910) do
+ActiveRecord::Schema.define(version: 20150731163534) do
 
   create_table "attachinary_files", force: :cascade do |t|
     t.integer  "attachinariable_id"
@@ -204,6 +204,7 @@ ActiveRecord::Schema.define(version: 20150731151910) do
     t.integer  "category_id"
     t.integer  "views"
     t.string   "embed"
+    t.boolean  "featured"
   end
 
   create_table "taggings", force: :cascade do |t|

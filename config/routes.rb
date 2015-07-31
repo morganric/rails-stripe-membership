@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
     get '/popular', to: 'projects#popular', :as => :popular
   get '/random', to: 'projects#random', :as => :random
+  get '/featured', to: 'projects#featured', :as => :featured
 
 
   resources :categories
