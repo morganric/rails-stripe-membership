@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728170636) do
+ActiveRecord::Schema.define(version: 20150731151910) do
 
   create_table "attachinary_files", force: :cascade do |t|
     t.integer  "attachinariable_id"
@@ -176,13 +176,15 @@ ActiveRecord::Schema.define(version: 20150728170636) do
     t.string   "twitter"
     t.string   "cover"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "domain"
     t.string   "slug"
     t.string   "tumblr"
     t.string   "instagram"
     t.string   "font"
+    t.string   "tag_line"
+    t.string   "contact_email"
   end
 
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true

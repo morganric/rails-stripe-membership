@@ -46,6 +46,21 @@
   </div>
   </div>
   <div class="col-md-6">
+   <div class="field">
+    <%= f.label :tag_line %><br>
+    <%= f.text_field :tag_line %>
+  </div>
+<br/>
+ <div class="field">
+    <%= f.label :contact_email %><br>
+   <%= f.text_field :contact_email %>
+  </div>
+<br/>
+  <div class="field">
+    <%= f.label :font %><br>
+    <%= f.collection_select :font, ['Nunito', 'Oxygen','Cantarell', 'Philosopher', 'Droid Sans' ,'Montserrat', 'Futura', 'Helvetica'], :to_s, :to_s, include_blank: false %>
+  </div>
+<br/>
   <h3>Social Links</h3>
   <div class="field">
     <%= f.label :twitter %><br>
@@ -62,10 +77,6 @@
     www.instagram.com/<%= f.text_field :instagram %>
   </div>
 <br/>
-  <div class="field">
-    <%= f.label :font %><br>
-    <%= f.collection_select :font, ['Nunito', 'Oxygen','Cantarell', 'Philosopher', 'Droid Sans' ,'Montserrat', 'Futura', 'Helvetica'], :to_s, :to_s, include_blank: false %>
-  </div>
 
   <div class="field hidden">
     <%= f.label :cover %><br>

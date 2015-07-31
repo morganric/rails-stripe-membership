@@ -5,8 +5,15 @@
      <%= image_tag(@profile.image.url(:standard)) %>
      <br/><br/>
      <p>
+     <% unless @profile.contact_email.blank? %>
+  <%= link_to @profile.contact_email, "mailto:#{@profile.contact_email}" %>
+  <% end %>
+  </p>
+
+     <p>
      <%= link_to @profile.domain, "http://#{@profile.domain}", target: '_blank' %>
      </p>
+
 
     <p>
       <%= link_to raw("<i class='fa fa-twitter' ></i>"), "http://twitter.com/#{@profile.twitter}", :target => "_blank" %>

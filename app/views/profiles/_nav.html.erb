@@ -2,6 +2,12 @@
 <br/>
 <h1  class="pull-center">
   <%= link_to "#{@profile.first_name} #{@profile.second_name}", vanity_profile_path(@profile.username) %> 
+  <% unless @profile.tag_line.blank? %>
+  <small>
+  <br/>
+  <%= @profile.tag_line %>
+  </small>
+  <% end %>
 </h1>
 <br/>
 
@@ -13,8 +19,9 @@
       <% end %>
 
      <div class="menu"><a href="<%= vanity_about_path(:user_id => @profile.slug) %>">About</a></div>
-     <div class="menu"><a href="<%= vanity_cv_path(:user_id => @profile.slug) %>" >CV</a></div>
-    
+     <% unless @profile.user.items == nil %>
+     	<div class="menu"><a href="<%= vanity_cv_path(:user_id => @profile.slug) %>" >CV</a></div>
+    <% end %>
   </div>
 </div>
 <hr/>
