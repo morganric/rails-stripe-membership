@@ -46,6 +46,11 @@
   </div>
   </div>
   <div class="col-md-6">
+   <div class="field ">
+    <%= f.label :location %><br>
+    <%= country_select("profile", "location", priority_countries: ["GB", "FR", "US"]) %>
+  </div>
+  <br/>
    <div class="field">
     <%= f.label :tag_line %><br>
     <%= f.text_field :tag_line %>

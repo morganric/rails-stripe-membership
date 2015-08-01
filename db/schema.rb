@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731163534) do
+ActiveRecord::Schema.define(version: 20150801091822) do
 
   create_table "attachinary_files", force: :cascade do |t|
     t.integer  "attachinariable_id"
@@ -185,6 +185,7 @@ ActiveRecord::Schema.define(version: 20150731163534) do
     t.string   "font"
     t.string   "tag_line"
     t.string   "contact_email"
+    t.string   "location"
   end
 
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true

@@ -4,6 +4,7 @@
      <div class="col-md-2 col-md-offset-2">
      <%= image_tag(@profile.image.url(:standard)) %>
      <br/><br/>
+     <p><%= @profile.location %>
      <p>
      <% unless @profile.contact_email.blank? %>
   <%= link_to @profile.contact_email, "mailto:#{@profile.contact_email}" %>

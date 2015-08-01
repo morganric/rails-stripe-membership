@@ -66,7 +66,7 @@
 <% if @project.video.blank? and @project.embed.blank? %>
 
   <% if @project.images.blank? %>
-    <%= image_tag @project.image.url(:large) %>
+    <%= image_tag @project.image.url(:large), :class => "img-responsive" %>
   <% else %>
     <%= render  'slider' %> 
   <% end %>

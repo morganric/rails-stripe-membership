@@ -25,6 +25,7 @@ gem 'payola-payments', :git => "git://github.com/archonic/payola.git", :branch =
 gem 'attachinary' 
 gem  'rails_autolink'
 gem 'google-webfonts-rails'
+gem 'country_select', github: 'stefanpenner/country_select'
 
 group :development, :test do
   gem 'byebug'
