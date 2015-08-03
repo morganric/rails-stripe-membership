@@ -11,7 +11,8 @@
       maxwidth: 600,
       maxheight: 400,
       chars: 200,
-      autoplay: false
+      autoplay: false, 
+      className: "embed-responsive-item"
     }});
  });
 
@@ -44,10 +45,10 @@
 
 <% unless  @project.embed.blank? %>
 
-<div id="embed">
-<%= link_to @project.embed, @project.embed, :style=>"color:white !important;"%>
-</div>
 
+  <div id="embed" class="embed-responsive embed-responsive-16by9">
+    <%= link_to @project.embed, @project.embed, :style=>"color:white !important;", :class=>"embed-responsive-item"%>
+  </div>
 <% end %>
 
 <% unless @project.video.blank? %>
@@ -77,17 +78,13 @@
 
 
  <div class="col-md-4 ">
-
-
    <label class="label label-primary"><i class="icon-eye"></i><%= @project.views %> views</label>
- <%  @project.tag_list.each do |tag| %>
+        <%  @project.tag_list.each do |tag| %>
   <label class="label label-default">#<%= link_to tag, tag_path(tag: tag), :class=>"white"%></label>
 <% end %>
 
 <p class="">
-
   <%=simple_format h auto_link(@project.description, :html => { :target => '_blank' }) %>
- 
 </p>
 
 <%= link_to 'Back', url_for(:back) %>
