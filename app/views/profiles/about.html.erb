@@ -6,8 +6,8 @@
      <br/><br/>
      <% unless @profile.location.blank? %>
      <p><%= @profile.location %>
-     <% end %>
      <p>
+      <% end %>
      <% unless @profile.contact_email.blank? %>
   <%= link_to @profile.contact_email, "mailto:#{@profile.contact_email}" %>
   <% end %>
