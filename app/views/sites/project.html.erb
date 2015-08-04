@@ -41,7 +41,7 @@
 
 <% unless  @project.embed.blank? %>
 
-<div id="embed">
+  <div id="embed" class="embed-responsive embed-responsive-16by9">
 <%= link_to @project.embed, @project.embed, :style=>"color:white !important;"%>
 </div>
 

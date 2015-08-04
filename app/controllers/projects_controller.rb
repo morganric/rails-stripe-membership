@@ -6,11 +6,11 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all.order('created_at DESC').page(params[:page]).per(10)
+    @projects = Project.where(:hidden => false).order('created_at DESC').page(params[:page]).per(10)
   end
 
   def featured
-    @projects = Project.where(:featured => true).order('created_at DESC').page(params[:page]).per(10)
+    @projects = Project.where(:hidden => false).where(:featured => true).order('created_at DESC').page(params[:page]).per(10)
   end
 
   def admin
@@ -22,14 +22,14 @@ class ProjectsController < ApplicationController
   end
 
   def random
-    @projects = Project.all.order('created_at DESC').page(params[:page]).per(10)
+    @projects = Project.where(:hidden => false).order('created_at DESC').page(params[:page]).per(10)
     @random = @projects.page(params[:page]).per(10)
   end
 
 
   def popular
-    @projects = Project.all.order('created_at DESC').page(params[:page]).per(10)
-    @popular = Project.all.order('views DESC').page(params[:page]).per(10)
+    @projects = Project.where(:hidden => false).order('created_at DESC').page(params[:page]).per(10)
+    @popular = Project.where(:hidden => false).order('views DESC').page(params[:page]).per(10)
   end
 
   # GET /projects/1
@@ -38,7 +38,9 @@ class ProjectsController < ApplicationController
       
       @project.views = @project.views.to_i + 1
       @project.save
-
+      if @project.hidden == true
+        redirect_to root_path
+      end
   end
 
   def tag
@@ -87,6 +89,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user_id = current_user.id
     @project.views = 1
+    @project.hidden = false
 
     if project_params[:video] != nil
     file = project_params[:video].tempfile.open
@@ -145,6 +148,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title,:tag_list, :views, :description, :cover, :images, :image, :video, :user_id, :slug, :category_id, :embed, :featured)
+      params.require(:project).permit(:title,:tag_list, :views, :description, :cover,
+       :images, :image, :video, :user_id, :slug, :category_id, :embed, :featured, :hidden)
     end
 end

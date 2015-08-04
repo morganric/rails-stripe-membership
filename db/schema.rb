@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801091822) do
+ActiveRecord::Schema.define(version: 20150804172615) do
 
   create_table "attachinary_files", force: :cascade do |t|
     t.integer  "attachinariable_id"
@@ -199,13 +199,14 @@ ActiveRecord::Schema.define(version: 20150801091822) do
     t.string   "video"
     t.integer  "user_id"
     t.string   "slug"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "tag_list"
     t.integer  "category_id"
     t.integer  "views"
     t.string   "embed"
     t.boolean  "featured"
+    t.boolean  "hidden",      default: false
   end
 
   create_table "taggings", force: :cascade do |t|
