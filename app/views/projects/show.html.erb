@@ -88,7 +88,8 @@
 </p>
 
 <%= link_to 'Back', url_for(:back) %> | 
-<%= link_to 'Next', vanity_project_path(:id => @next.slug, :user_id => @project.user.profile.slug) %>
+<% unless @next == nil %><%= link_to 'Next', vanity_project_path(:id => @next.slug, :user_id => @project.user.profile.slug) %>
+<% end %>
 <% if user_signed_in? %>
   <% if current_user.try(:admin?) || current_user == @project.user %>
  | <%= link_to 'Edit', edit_project_path(@project) %> | 
