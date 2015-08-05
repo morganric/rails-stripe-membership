@@ -41,6 +41,10 @@ class ProjectsController < ApplicationController
       if @project.hidden == true
         redirect_to root_path
       end
+
+      @projects = Project.where(:user_id => @project.user.id)
+      index = @projects.index(@project)
+      @next = @projects[index + 1]
   end
 
   def tag

@@ -52,8 +52,6 @@ get '/beta', to: 'visitors#index', as: :beta
 
   end 
 
- 
-
   get ':user_id/project/:id', to: 'projects#show', as: :vanity_project
   get ':user_id/tagged/:tag', to: 'profiles#tag', :as => :vanity_tag
   get ':user_id/category/:category_id', to: 'profiles#category', :as => :vanity_category

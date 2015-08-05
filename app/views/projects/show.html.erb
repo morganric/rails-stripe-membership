@@ -87,7 +87,8 @@
   <%=simple_format h auto_link(@project.description, :html => { :target => '_blank' }) %>
 </p>
 
-<%= link_to 'Back', url_for(:back) %>
+<%= link_to 'Back', url_for(:back) %> | 
+<%= link_to 'Next', vanity_project_path(:id => @next.slug, :user_id => @project.user.profile.slug) %>
 <% if user_signed_in? %>
   <% if current_user.try(:admin?) || current_user == @project.user %>
  | <%= link_to 'Edit', edit_project_path(@project) %> | 
