@@ -87,8 +87,12 @@
   <%=simple_format h auto_link(@project.description, :html => { :target => '_blank' }) %>
 </p>
 
-<%= link_to 'Back', url_for(:back) %> | 
-<% unless @next == nil %><%= link_to 'Next', vanity_project_path(:id => @next.slug, :user_id => @project.user.profile.slug) %>
+<%#= link_to 'Back', url_for(:back) %>
+<% unless @next == nil %>
+  <%= link_to 'Next', vanity_project_path(:id => @next.slug, :user_id => @project.user.profile.slug) %>
+<% end %>
+<% unless @previous == nil %>
+   | <%= link_to 'Previous', vanity_project_path(:id => @previous.slug, :user_id => @project.user.profile.slug) %>
 <% end %>
 <% if user_signed_in? %>
   <% if current_user.try(:admin?) || current_user == @project.user %>

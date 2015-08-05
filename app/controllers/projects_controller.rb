@@ -42,9 +42,10 @@ class ProjectsController < ApplicationController
         redirect_to root_path
       end
 
-      @projects = Project.where(:user_id => @project.user.id)
+      @projects = Project.where(:user_id => @project.user.id).order('created_at DESC')
       index = @projects.index(@project)
       @next = @projects[index + 1]
+      @previous = @projects[index - 1]
   end
 
   def tag
