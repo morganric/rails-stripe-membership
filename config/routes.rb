@@ -48,7 +48,7 @@ get '/beta', to: 'visitors#index', as: :beta
 
    scope ":id" do
     
-    get '/', to: 'profiles#show', :as =>  :vanity_profile
+    get '/', to: 'profiles#feed', :as =>  :vanity_profile
 
   end 
 
@@ -59,6 +59,8 @@ get '/beta', to: 'visitors#index', as: :beta
   get ':user_id/cv', to: 'profiles#cv', :as => :vanity_cv
   get ':user_id/popular', to: 'profiles#popular', :as => :vanity_popular
   get ':user_id/random', to: 'profiles#random', :as => :vanity_random
+  get ':user_id/feed', to: 'profiles#feed', :as => :vanity_feed
+   get ':user_id/latest', to: 'profiles#show', :as => :vanity_latest
   get ':user_id/admin', to: 'projects#admin', :as => :admin 
 
   get '/tagged/:tag', to: 'projects#tag', :as => :tag

@@ -1,12 +1,28 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :page, :edit, :update, :destroy, :tag, :category, :about, :cv, :popular, :random]
+  before_action :set_profile, only: [:show, :page, :edit, :update, :destroy, :tag, :category, :about, :cv, :popular, :random, :feed]
     before_action :allow_iframe
-    before_action :admin_only, :except => [:show, :page, :tag, :category, :update, :edit, :about, :cv, :random, :popular]
+    before_action :admin_only, :except => [:show, :page, :tag, :category, :update, :edit, :about, :cv, :random, :popular, :feed]
 
   # GET /profiles
   # GET /profiles.json
   def index
     @profiles = Profile.all
+  end
+
+    def feed
+        
+       @categories = Category.where(:user_id => @profile.user.id)
+       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(10)
+      @projects = @projects.where(:feed => true)
+       @tags = []
+
+       @projects.each do |p|
+        p.tag_list.each do |tag|
+          @tags << tag
+        end
+      end
+      @tags = @tags.uniq
+
   end
 
   # GET /profiles/1

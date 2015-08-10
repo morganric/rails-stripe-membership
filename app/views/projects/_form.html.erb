@@ -12,6 +12,7 @@
     </div>
   <% end %>
   <fieldset>
+<div class="row">
 <div class="form-group col-lg-6">
   <div class="field">
     <%= f.label :title %><br>
@@ -42,10 +43,7 @@
     <%= f.label :video %><br>
     <%= f.file_field :video %>
   </div>
-  <hr/>
-  <div class="actions">
-    <%= f.submit :class => "btn"  %>
-  </div>
+  
   </div>
 
   <div class="form-group col-lg-6">
@@ -69,11 +67,16 @@
     <%= attachinary_file_field_tag 'project[images]', @project, :images %>
   </div>
   <br/>
-  <h3>Admin</h3>
+   <div class="field">
+    <%= f.label :feed %><br>
+    <%= f.check_box :feed %>
+  </div>
+  </div>
 
+  </div>
   <% if user_signed_in? %>
   <% if current_user.try(:admin?) %>
-
+    <h3>Admin</h3>
   <div class="field">
     <%= f.label :featured %><br>
     <%= f.check_box :featured %>
@@ -83,8 +86,14 @@
     <%= f.label :hidden %><br>
     <%= f.check_box :hidden %>
   </div>
-    <% end %>
-       <% end %>
+      <% end %>
+<% end %>
+
+<hr/>
+  <div class="actions">
+    <%= f.submit :class => "btn"  %>
+  </div>
+
    
   </div>
   
