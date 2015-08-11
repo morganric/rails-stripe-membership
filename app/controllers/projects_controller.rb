@@ -26,6 +26,8 @@ class ProjectsController < ApplicationController
       @allviews = @allviews + p.views
     end
 
+    @users = User.all
+
   end
 
   def random
