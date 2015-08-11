@@ -12,8 +12,8 @@ class ProfilesController < ApplicationController
     def feed
         
        @categories = Category.where(:user_id => @profile.user.id)
-       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(10)
-      @projects = @projects.where(:feed => true)
+       @projects = Project.where(:user_id => @profile.user.id).where(:feed => true).order('rank ASC').page(params[:page]).per(10)
+       
        @tags = []
 
        @projects.each do |p|
