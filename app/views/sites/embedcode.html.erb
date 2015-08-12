@@ -1,0 +1,75 @@
+
+<% content_for :page_javascript do %>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+  <script src="http://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
+
+
+ <script type="text/javascript">
+ $(document).ready(function(){
+    $(' a.embed').embedly(
+      {key: '8d4c76144f8711e1b4764040d3dc5c07',
+      query: {
+      maxwidth: 600,
+      maxheight: 400,
+      chars: 200,
+      autoplay: false, 
+      className: "embed-responsive-item"
+    }});
+ });
+
+ </script>
+<% end %>
+
+
+
+<%= render 'nav', :categories => @categories %>
+
+
+
+<div class="row" >
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+
+  <div class="tab-content ">
+    
+ 
+    
+
+    <div class="tab-pane active" id="all">
+     
+    <div class="col-md-10 col-md-offset-1" >
+
+     <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
+
+  
+     <% @projects.each do |project| %>
+      <% unless project.embed === nil || project.embed === "" %> 
+          <div class=" pull-left col3 box" %>
+          
+              <div class="embed-responsive embed-responsive-16by9">
+                 <%= link_to ' ', project.embed, :class => 'embed' %>
+             </div>
+         </div>
+        <% end %>
+     <% end %>
+
+</div>
+
+
+<div class="hidden">
+<%#= paginate @embeds %>
+</div>
+</div>
+    </div>
+
+
+
+  </div>
+</div>
+
+
+
+</div>
+</div>
+
+
+

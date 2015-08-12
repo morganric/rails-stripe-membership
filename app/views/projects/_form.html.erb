@@ -43,19 +43,24 @@
     <%= f.label :video %><br>
     <%= f.file_field :video %>
   </div>
-  
-  </div>
-
-  <div class="form-group col-lg-6">
-   
-  
-  <div class="field">
+  <br/>
+    <div class="field">
     <%= f.label :category %><br>
     <%= f.collection_select :category_id, Category.where(:user_id => current_user.id), :id, :name, include_blank: true %>
   </div>
 
   <br/>
    <p>(<%= link_to 'New Category', new_category_path %>)</p>
+  
+  
+  </div>
+
+  <div class="form-group col-lg-6">
+   
+   <div class="field">
+    <%= f.label :embed_code %><br>
+    <%= f.text_area :embed_code, :class=>"form-control", :rows=>"3" %>
+  </div>
   <br/>
   <div class="field">
     <%= f.label "Embed link" %><br>
@@ -76,6 +81,8 @@
     <%= f.label :rank %><br>
     <%= f.number_field :rank %>
   </div>
+
+    
   </div>
 
   </div>

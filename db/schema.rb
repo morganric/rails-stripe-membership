@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811091652) do
+ActiveRecord::Schema.define(version: 20150812165415) do
 
   create_table "attachinary_files", force: :cascade do |t|
     t.integer  "attachinariable_id"
@@ -209,6 +209,7 @@ ActiveRecord::Schema.define(version: 20150811091652) do
     t.boolean  "hidden",      default: false
     t.boolean  "feed",        default: false
     t.integer  "rank"
+    t.text     "embed_code"
   end
 
   create_table "taggings", force: :cascade do |t|

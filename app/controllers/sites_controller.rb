@@ -1,7 +1,7 @@
 class SitesController < ApplicationController
-  before_action :set_profile, only: [:project, :profile, :tag, :category, :cv, :about, :embed]
+  before_action :set_profile, only: [:project, :profile, :tag, :category, :cv, :about, :embed, :media]
     before_action :allow_iframe
-    before_action :admin_only, :except => [:project, :profile, :tag, :category, :cv, :about, :embed]
+    before_action :admin_only, :except => [:project, :profile, :tag, :category, :cv, :about, :embed, :media]
 
   # GET /profiles
   # GET /profiles.json
@@ -28,7 +28,7 @@ class SitesController < ApplicationController
        render layout: 'blank'
   end
 
-  def embed
+  def media
         
         @categories = Category.where(:user_id => @profile.user.id)
        @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(50)
