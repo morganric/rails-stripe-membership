@@ -31,7 +31,7 @@ class SitesController < ApplicationController
   def embed
         
         @categories = Category.where(:user_id => @profile.user.id)
-       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(10)
+       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(20)
        @tags = []
        @embeds = []
 
