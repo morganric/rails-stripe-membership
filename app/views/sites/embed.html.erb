@@ -41,7 +41,7 @@
      <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
 
   
-     <% @projects.each do |project| %>
+     <% @embeds.each do |project| %>
       <% unless project.embed == nil || project.embed == "" %> 
       <div class=" pull-left col3 box" %>
       
@@ -56,7 +56,7 @@
 
 
 <div class="hidden">
-<%= paginate @projects %>
+<%#= paginate @embeds %>
 </div>
 </div>
     </div>

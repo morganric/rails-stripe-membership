@@ -33,6 +33,14 @@ class SitesController < ApplicationController
         @categories = Category.where(:user_id => @profile.user.id)
        @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(10)
        @tags = []
+       @embeds = []
+
+       @projects.each do |p|
+        if p.embed != ''
+          @embeds << p
+        end
+      end
+
 
        @projects.each do |p|
         p.tag_list.each do |tag|
