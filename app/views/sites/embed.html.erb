@@ -42,7 +42,7 @@
 
   
      <% @projects.each do |project| %>
-      <% unless project.embed == nil || project.embed == "" %> 
+      <% if project.embed != nil || project.embed != "" %> 
       <div class=" pull-left col3 box" %>
       
           <div class="embed-responsive embed-responsive-16by9">
@@ -50,7 +50,6 @@
          </div>
      </div>
           <% end %>
-          <%= project.title %>
      <% end %>
 
 </div>
