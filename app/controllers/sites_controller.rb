@@ -1,7 +1,7 @@
 class SitesController < ApplicationController
-  before_action :set_profile, only: [:project, :profile, :tag, :category, :cv, :about]
+  before_action :set_profile, only: [:project, :profile, :tag, :category, :cv, :about, :embed]
     before_action :allow_iframe
-    before_action :admin_only, :except => [:project, :profile, :tag, :category, :cv, :about]
+    before_action :admin_only, :except => [:project, :profile, :tag, :category, :cv, :about, :embed]
 
   # GET /profiles
   # GET /profiles.json
@@ -13,6 +13,22 @@ class SitesController < ApplicationController
   end
 
   def profile
+        
+        @categories = Category.where(:user_id => @profile.user.id)
+       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(10)
+       @tags = []
+
+       @projects.each do |p|
+        p.tag_list.each do |tag|
+          @tags << tag
+        end
+      end
+      @tags = @tags.uniq
+
+       render layout: 'blank'
+  end
+
+  def embed
         
         @categories = Category.where(:user_id => @profile.user.id)
        @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(10)
