@@ -41,7 +41,7 @@
      <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
 
   
-     <% @embeds.each do |project| %>
+     <% @projects.each do |project| %>
       <% unless project.embed == nil || project.embed == "" %> 
       <div class=" pull-left col3 box" %>
       
@@ -50,6 +50,7 @@
          </div>
      </div>
           <% end %>
+          <%= project.title %>
      <% end %>
 
 </div>
