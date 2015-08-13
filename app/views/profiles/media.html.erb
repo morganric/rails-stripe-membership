@@ -24,7 +24,7 @@
               <div class="embed-responsive embed-responsive-16by9">
                  <%= raw(project.embed_code) %>
              </div>
-              <h4 class=""><%= link_to project.title, site_project_path( id: project.id) %></h4>
+              <h4 class=""><%= link_to project.title, vanity_project_path( id: project.slug, :user_id => project.user.profile.slug) %></h4>
          </div>
         <% end %>
      <% end %>
