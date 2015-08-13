@@ -1,0 +1,52 @@
+<%= render 'nav', :categories => @categories %>
+
+
+
+<div class="row" >
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+
+  <div class="tab-content ">
+    
+ 
+    
+
+    <div class="tab-pane active" id="all">
+     
+    <div class="col-md-10 col-md-offset-1" >
+
+     <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
+
+  
+     <% @projects.each do |project| %>
+      <% unless project.embed_code === nil || project.embed_code === "" %> 
+          <div class=" pull-left col3 box" %>
+          
+              <div class="embed-responsive embed-responsive-16by9">
+                 <%= raw(project.embed_code) %>
+             </div>
+              <h4 class=""><%= link_to project.title, site_project_path( id: project.id) %></h4>
+         </div>
+        <% end %>
+     <% end %>
+
+</div>
+
+
+<div class="hidden">
+<%= paginate @projects %>
+</div>
+</div>
+    </div>
+
+
+
+  </div>
+</div>
+
+
+
+</div>
+</div>
+
+
+

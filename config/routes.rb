@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get '/tagged/:tag', to: 'sites#tag', via: [:get, :post], :as => :site_tag
     get '/category/:category_id', to: 'sites#category', via: [:get, :post], :as => :site_category
     get '/about', to: 'sites#about', :as => :site_about
-    get '/embed', to: 'sites#media', :as => :site_embed
+    get '/embed', to: 'sites#embed', :as => :site_embed
     get '/media', to: 'sites#media', :as => :site_media
     # get '/cv', to: ' sites#cv', :as => :site_cv
   end
@@ -64,7 +64,7 @@ get '/beta', to: 'visitors#index', as: :beta
   get ':user_id/feed', to: 'profiles#feed', :as => :vanity_feed
    get ':user_id/latest', to: 'profiles#show', :as => :vanity_latest
   get ':user_id/admin', to: 'projects#admin', :as => :admin 
-
+  get ':user_id/media', to: 'profiles#media', :as => :vanity_media
   get '/tagged/:tag', to: 'projects#tag', :as => :tag
 
 

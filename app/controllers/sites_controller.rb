@@ -28,26 +28,17 @@ class SitesController < ApplicationController
        render layout: 'blank'
   end
 
+  def embed
+     @categories = Category.where(:user_id => @profile.user.id)
+       @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(50)
+       render layout: 'blank'
+  end
+
   def media
         
         @categories = Category.where(:user_id => @profile.user.id)
        @projects = Project.where(:user_id => @profile.user.id).order('created_at DESC').page(params[:page]).per(50)
-       @tags = []
-       @embeds = []
 
-       @projects.each do |p|
-        if p.embed != ''
-          @embeds << p
-        end
-      end
-
-
-       @projects.each do |p|
-        p.tag_list.each do |tag|
-          @tags << tag
-        end
-      end
-      @tags = @tags.uniq
 
        render layout: 'blank'
   end

@@ -48,6 +48,7 @@
           <div class="embed-responsive embed-responsive-16by9">
              <%= link_to ' ', project.embed, :class => 'embed' %>
          </div>
+         <h4 class=""><%= link_to project.title, site_project_path( id: project.id) %></h4>
      </div>
           <% end %>
      <% end %>
@@ -56,7 +57,7 @@
 
 
 <div class="hidden">
-<%#= paginate @embeds %>
+<%= paginate @projects %>
 </div>
 </div>
     </div>

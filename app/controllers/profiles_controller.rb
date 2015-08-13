@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :page, :edit, :update, :destroy, :tag, :category, :about, :cv, :popular, :random, :feed]
+  before_action :set_profile, only: [:show, :page, :edit, :update, :destroy, :tag, :category, :about, :cv, :popular, :random, :feed, :media]
     before_action :allow_iframe
-    before_action :admin_only, :except => [:show, :page, :tag, :category, :update, :edit, :about, :cv, :random, :popular, :feed]
+    before_action :admin_only, :except => [:show, :page, :tag, :category, :update, :edit, :about, :cv, :random, :popular, :feed, :media]
 
   # GET /profiles
   # GET /profiles.json
@@ -43,6 +43,25 @@ class ProfilesController < ApplicationController
       @tags = @tags.uniq
 
   end
+
+  def media
+        
+       @categories = Category.where(:user_id => @profile.user.id)
+       @projects = Project.where(:user_id => @profile.user.id).where("embed_code IS NOT NULL").order('created_at DESC').page(params[:page]).per(10)
+
+       @media = []
+
+       @projects.each do |p|
+        unless p.embed_code == "" 
+          @media << p
+        end
+      end
+
+      @media = @media
+
+
+  end
+
 
   def popular
         

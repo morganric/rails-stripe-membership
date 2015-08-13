@@ -43,15 +43,16 @@
 
 <div class="col-md-8">
 
-<% unless  @project.embed.blank? %>
-  <div id="embed" class="embed-responsive embed-responsive-16by9">
-    <%= link_to @project.embed, @project.embed, :style=>"color:white !important;", :class=>"embed-responsive-item"%>
-  </div>
-<% else @project.embed_code.blank? %>
+
+<% if @project.embed_code != ""  %>
   <div id="embed" class="embed-responsive embed-responsive-16by9">
     <%= raw(@project.embed_code) %>
   </div>
-<% end %>
+<% elsif @project.embed.blank? %>
+  <div id="embed" class="embed-responsive embed-responsive-16by9">
+    <%#= link_to @project.embed, @project.embed, :style=>"color:white !important;", :class=>"embed-responsive-item"%>
+  </div>
+  <% end %>
 
 <% unless @project.video.blank? %>
 
