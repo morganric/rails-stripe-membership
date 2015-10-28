@@ -1,6 +1,5 @@
 
-ENV["STRIPE_API_KEY"] = "sk_test_PhIgEyytohpRn7TF5eXG9Sk9"
-ENV["STRIPE_PUBLISHABLE_KEY"] = "pk_test_PeLyRBcFsGgCdFxNcgAopo6F"
+
 
 
 ENV["FACEBOOK_APP_ID"] = "615925001838726"
