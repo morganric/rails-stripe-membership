@@ -9,9 +9,6 @@ ENV["FACEBOOK_APP_ID"] = "615925001838726"
 ENV["FACEBOOK_APP_SECRET"] = "b5626bc8bb29a1c3eab42e707adbfa01"
 
 
-ENV["STRIPE_API_KEY"] = "sk_live_5EGD5UWyXW45nCXN7yB8VqTr"
-ENV["STRIPE_PUBLISHABLE_KEY"] = "pk_live_tLTQX2PjZTyJigo0FShpajcO"
-
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
